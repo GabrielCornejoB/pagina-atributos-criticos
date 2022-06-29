@@ -1,12 +1,45 @@
-/* *{
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
-} */
+    font-family: 'Poppins', sans-serif;
+}
 body {
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e0e0e0;
 }
+
+.card {
+    position: relative;
+    background: red;
+    width: 1080px;
+}
+
+.card .titulo {
+    width: 1080px;
+    background: rebeccapurple;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card .contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1080px;
+    background: whitesmoke;
+}
+
+
 
 /* ::-webkit-scrollbar {
     width: 20px;
