@@ -49,8 +49,22 @@ body {
     justify-content: space-between;
 }
 
-.card .contenido-paso-1 input {
+input {
     padding: 5px;
+}
+
+.card .contenido-paso-1 button {
+    padding: 5px 10px;
+    background-color: transparent;
+    border: 3px solid rebeccapurple;
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.card .contenido-paso-1 button:hover {
+    background-color: rebeccapurple;
+    color: white;
 }
 
 .card .contenido-paso-2 {
@@ -74,6 +88,10 @@ body {
     grid-template-columns: auto auto;
     gap: 20px 20px;
 }
+
+/* .card .contenido-paso-2 input {
+    paddin
+} */
 
 .botones {
     display: flex;
