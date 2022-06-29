@@ -52,6 +52,20 @@ body {
     padding: 5px;
 }
 
+.botones {
+    background: rgba(94, 16, 173, 0.5);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.botones button {
+    padding: 5px;
+    
+}
 /* ::-webkit-scrollbar {
     width: 20px;
 }
