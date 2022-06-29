@@ -11,12 +11,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #e0e0e0;
+    background: rgb(52, 52, 63);
 }
 
 .card {
     position: relative;
-    background: red;
+    /* background: red; */
     width: 1080px;
 }
 
@@ -29,17 +29,28 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: x-large;
 }
 
 .card .contenido {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: 1080px;
+    height: 600px;
     background: whitesmoke;
+    border-radius: 0 0 20px 20px;
 }
 
+.card .contenido p {
+    font-size: larger;
+}
 
+.card .contenido input {
+    padding: 5px;
+}
 
 /* ::-webkit-scrollbar {
     width: 20px;
