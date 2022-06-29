@@ -13,7 +13,6 @@ body {
     justify-content: center;
     background: rgb(52, 52, 63);
 }
-
 input {
     padding: 5px;
 }
@@ -26,7 +25,6 @@ input {
     font-size: 15px;
     font-weight: 550;
 }
-
 .btn_confirmar:hover {
     background-color: rebeccapurple;
     color: white;
@@ -36,7 +34,6 @@ input {
     position: relative;
     width: 1080px;
 }
-
 .card .titulo {
     width: 1080px;
     background: rebeccapurple;
@@ -48,7 +45,6 @@ input {
     align-items: center;
     font-size: x-large;
 }
-
 .card .contenido {
     padding: 20px;
     width: 1080px;
@@ -56,10 +52,11 @@ input {
     background: whitesmoke;
     border-radius: 0 0 20px 20px;
 }
+
+/* Paso 1 */
 .card .contenido-paso-1 p {
     font-size: larger;
 }
-
 .card .contenido-paso-1 {
     display: flex;
     flex-direction: column;
@@ -67,23 +64,19 @@ input {
     justify-content: space-between;
 }
 
-
-
+/* Paso 2 */
 .card .contenido-paso-2 {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .contenido-paso-2 {
     overflow-x: hidden;
     overflow-y: auto;
 }
-
 .card .contenido-paso-2 p {
     font-size: larger;
 }
-
 .div-paso-2 {
     width: 80%;
     display: grid;
@@ -91,10 +84,27 @@ input {
     gap: 20px 20px;
 }
 
-/* .card .contenido-paso-2 input {
-    paddin
-} */
+/* Paso 3 */
+.card .contenido-paso-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenido-paso-3 {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.div-paso-3 {
+    width: 80%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px 20px;
+}
+.card .contenido-paso-3 p {
+    font-size: larger;
+}
 
+/* Botones parte inferior */
 .botones {
     display: flex;
     flex-direction: row;

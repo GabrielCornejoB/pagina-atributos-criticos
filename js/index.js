@@ -15,6 +15,7 @@ function agregarObjetivos() {
         creacionInputsPaso2();
     }
     console.log(listaObjetivos)
+    mostrarContenido("paso-2");
 }
 
 // Paso 2
@@ -30,7 +31,7 @@ function creacionInputsPaso2() {
     // strPaso2 = strPaso2.concat("<button onclick='creacionCheckBoxPaso3()'>Confirmar</button>")
     document.getElementById('div-paso-2').innerHTML = strPaso2;
 }
-let paso2Valido = false;
+// let paso2Valido = false;
 
 // Paso 3
 let listaProblemas = [];
@@ -44,9 +45,14 @@ function creacionCheckBoxPaso3() {
     }
     console.log(listaProblemas)
     let strPaso3 = "";
+    let strCheck = "<div><span>SI&nbsp</span><input type='checkbox'>&nbsp&nbsp&nbsp<span>NO&nbsp</span><input type='checkbox'> </div>"
     for (p in listaProblemas) {
-
+        let strTmp = "<p>" + listaProblemas[p] + "</p>" + strCheck + "<input type='text'>";
+        strPaso3 = strPaso3.concat(strTmp);
     }
+    document.getElementById('div-paso-3').innerHTML = strPaso3;
+
+    mostrarContenido("paso-3");
 }
 
 // Cambiar de vista en el HTML
