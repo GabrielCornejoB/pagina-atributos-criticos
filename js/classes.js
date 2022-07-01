@@ -1,8 +1,16 @@
+function crearEmpresa(descripcionEmpresa) {
+    return {
+        id,
+        descripcion: descripcionEmpresa,
+        listaObjetivos
+    };
+}
+
 function crearObjetivo(descripcionObjetivo) {
     return {
         id,                             // Consecutivo: O001, 0213, ...
         descripcion: descripcionObjetivo,
-        l_problemas
+        listaProblemas
     };
 }
 
@@ -12,8 +20,8 @@ function crearProblema(descripcionProblema) {
         descripcion: descripcionProblema,
         esDeDatos,                      // Bool, define si el problema es o no de datos
         valorTotal,
-        l_datos,
-        l_explicaciones
+        listaDatos,
+        listaExplicaciones
     };
 }
 
@@ -31,7 +39,7 @@ function crearDiccionario(descripcionDiccionario) {
     return {
         id,
         descripcion: descripcionDiccionario,
-        l_terminos                      
+        listaTerminos                      
     };
 }
 
