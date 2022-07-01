@@ -63,6 +63,19 @@ input {
     align-items: center;
     justify-content: space-between;
 }
+.contenido-paso-1 {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.div-paso-1 {
+    width: 80%;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 20px;
+}
+.div-paso-1 textarea {
+    padding: 5px 12px;
+}
 
 /* Paso 2 */
 .card .contenido-paso-2 {
@@ -79,6 +92,11 @@ input {
 }
 .div-paso-2 {
     width: 80%;
+    display: grid;
+    grid-template-columns: auto;
+    /* gap: 20px 50px 0 0; */
+}
+.div-paso-2-2 {
     display: grid;
     grid-template-columns: auto auto;
     gap: 20px 20px;

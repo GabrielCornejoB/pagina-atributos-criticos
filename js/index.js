@@ -25,7 +25,7 @@ function creacionInputsPaso2() {
     let strInputs = "<input type='text' placeholder='Aspecto problemático' class='input-paso-2'><input type='text' placeholder='Explicación'>";
     for (o in listaObjetivos) {
         it++;
-        let strTmp = "<p>" + it + ". " + listaObjetivos[o] + "</p><br>" + strInputs.repeat(5);
+        let strTmp = "<p>" + it + ". " + listaObjetivos[o] + "</p><br>" + "<div class='div-paso-2-2'>" + strInputs.repeat(5) + "</div><br><br>";
         strPaso2 = strPaso2.concat(strTmp);
     }
     // strPaso2 = strPaso2.concat("<button onclick='creacionCheckBoxPaso3()'>Confirmar</button>")
