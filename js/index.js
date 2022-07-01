@@ -49,9 +49,25 @@ function crearTermino(id, descripcionTermino) {
 
 // Paso a paso
 let empresa = crearEmpresa("E001", "tmp", []);
-let contadorObjetivos = 0
-let contadorProblemas = 0
-let contadorDatos = 0
+let contadorObjetivos = 1;
+let contadorProblemas = 1;
+let contadorDatos = 1;
+
+function idClases(letra, numero) {
+    let str = "" + numero;
+    let pad = "0000";
+    let final = pad.substring(0, pad.length - str.length) + numero;
+    if (letra.toUpperCase() === 'O') {
+        contadorObjetivos++;
+    }
+    else if(letra.toUpperCase() === 'P') {
+        contadorProblemas++;
+    }
+    else if (letra.tpUpperCase() === 'D') {
+        contadorDatos++;
+    }
+    return letra.toUpperCase() + final;
+}
 
 // Paso 1
 function isEmpty(str) {
@@ -62,8 +78,9 @@ function agregarObjetivos() {
     let listaInputs = document.getElementsByClassName("input-paso-1")
     for (let i=0; i<listaInputs.length; i++) {
         if(!isEmpty(listaInputs[i].value)) {
-            // let tmpObjetivo = crearObjetivo()
-            empresa.listaObjetivos.push(listaInputs[i].value);
+            let tmpObjetivo = crearObjetivo(idClases('O', contadorObjetivos), listaInputs[i].value, [])
+            console.log(tmpObjetivo);
+            empresa.listaObjetivos.push(tmpObjetivo);
         }
     }
     if(empresa.listaObjetivos.length !== 0) {
@@ -77,28 +94,30 @@ function agregarObjetivos() {
 function creacionInputsPaso2() {
     let strPaso2 = "";
     let it = 0;
-    let strInputs = "<input type='text' placeholder='Aspecto problemático' class='input-paso-2'><input type='text' placeholder='Explicación'>";
     for (o in empresa.listaObjetivos) {
         it++;
-        let strTmp = "<p>" + it + ". " + empresa.listaObjetivos[o] + "</p><br>" + "<div class='div-paso-2-2'>" + strInputs.repeat(5) + "</div><br><br>";
+        let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + "'><input type='text' placeholder='Explicación'>";
+        let strTmp = "<p>" + it + ". " + empresa.listaObjetivos[o].descripcion + "</p><br>" + "<div class='div-paso-2-2'>" + strInputs.repeat(5) + "</div><br><br>";
         strPaso2 = strPaso2.concat(strTmp);
     }
-    // strPaso2 = strPaso2.concat("<button onclick='creacionCheckBoxPaso3()'>Confirmar</button>")
     document.getElementById('div-paso-2').innerHTML = strPaso2;
 }
 // let paso2Valido = false;
 
 // Paso 3
-let listaProblemas = [];
+// let listaProblemas = [];
 function creacionCheckBoxPaso3() {
-    listaProblemas = [];
-    let listaInputs = document.getElementsByClassName("input-paso-2");
-    for (let i=0; i<listaInputs.length; i++) {
-        if(!isEmpty(listaInputs[i].value)) {
-            listaProblemas.push(listaInputs[i].value);
+    // listaProblemas = [];
+    for (o in empresa.listaObjetivos) {
+        let listaInputs = document.getElementsByClassName(o.id);
+        for (let i=0; i<listaInputs.length; i++) {
+            if(!isEmpty(listaInputs[i].value)) {
+                o.listaProblemas.push(listaInputs[i].value)
+                // listaProblemas.push(listaInputs[i].value);
+            }
         }
     }
-    console.log(listaProblemas)
+    // console.log(listaProblemas)
     let strPaso3 = "";
     let strCheck = "<div><span>SI&nbsp</span><input type='checkbox'>&nbsp&nbsp&nbsp<span>NO&nbsp</span><input type='checkbox'> </div>"
     for (p in listaProblemas) {
