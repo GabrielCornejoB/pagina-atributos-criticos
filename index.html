@@ -17,7 +17,7 @@
                         <h1>Paso 1: Identificación de objetivos estrategicos</h1>                       
                     </div>
                     <div class="contenido contenido-paso-1">
-                        <p>A continuación ingrese por favor los objetivos estratégicos del negocio que impactas o el objetivo estratégico de la unidad del negocio:</p><br>
+                        <p>A continuación ingrese por favor los objetivos estratégicos del negocio que impactas o el objetivo estratégico de la unidad del negocio:</p>
                         <!-- <input type="text" size="100" class="input-paso-1"> -->                      
                         <div class="div-paso-1">
                             <textarea name="input-1-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
@@ -32,7 +32,7 @@
                             <textarea name="input-10-p-1" cols="100" rows="3" class="input-paso-1"></textarea>
                         </div>
                         <br>
-                        <button onclick="agregarObjetivos()" class="btn_confirmar">Confirmar</button>
+                        <button onclick="agregarObjetivosP1()" class="btn_confirmar">Confirmar</button>
                     </div>     
                 </div>
             </div>
@@ -44,10 +44,10 @@
                         <h1>Paso 2: Identificación de aspectos problemáticos</h1>                       
                     </div>
                     <div class="contenido contenido-paso-2" >
-                        <p>A continuación ingrese por favor los aspectos problemáticos que dificultan la consecución de cada objetivo:</p><br>
+                        <p>A continuación ingrese por favor los aspectos problemáticos que dificultan la consecución de cada objetivo:</p>
                         <div id="div-paso-2" class="div-paso-2"></div>  
                         
-                        <button onclick='creacionCheckBoxPaso3()' class="btn_confirmar">Confirmar</button>                
+                        <button onclick='creacionCheckBoxP3()' class="btn_confirmar">Confirmar</button>                
                     </div>     
                 </div>
             </div>
@@ -91,11 +91,11 @@
         </div>
         <br>
         <div class="botones">
-            <button onclick="mostrarContenido('paso-1')" class="btn">PASO 1</button>
-            <button onclick="mostrarContenido('paso-2')" class="btn">PASO 2</button>
-            <button onclick="mostrarContenido('paso-3')" class="btn">PASO 3</button>
-            <button onclick="mostrarContenido('paso-4')" class="btn">PASO 4</button>
-            <button onclick="mostrarContenido('paso-5')" class="btn">PASO 5</button>
+            <button onclick="cambiarVista('paso-1')" class="btn">PASO 1</button>
+            <button onclick="cambiarVista('paso-2')" class="btn">PASO 2</button>
+            <button onclick="cambiarVista('paso-3')" class="btn">PASO 3</button>
+            <button onclick="cambiarVista('paso-4')" class="btn">PASO 4</button>
+            <button onclick="cambiarVista('paso-5')" class="btn">PASO 5</button>
         </div>     
     </section>
     
