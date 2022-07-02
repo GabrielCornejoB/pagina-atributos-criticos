@@ -49,6 +49,7 @@ function crearTermino(id, descripcionTermino) {
 
 // Paso a paso
 let empresa = crearEmpresa("E001", "tmp", []);
+console.log(empresa);
 let contadorObjetivos = 1;
 let contadorProblemas = 1;
 let contadorDatos = 1;
@@ -69,23 +70,20 @@ function idClases(letra, numero) {
     return letra.toUpperCase() + final;
 }
 
-// Paso 1
 function isEmpty(str) {
     return !str.trim().length;
 }
-function agregarObjetivosP1() {
+function agregarObjetivos() {
     empresa.listaObjetivos = [];
     let listaInputs = document.getElementsByClassName("input-paso-1");
     for (let i=0; i<listaInputs.length; i++) {
         if(!isEmpty(listaInputs[i].value)) {
             let tmpObjetivo = crearObjetivo(idClases('O', contadorObjetivos), listaInputs[i].value, []);
-            console.log(tmpObjetivo);
             empresa.listaObjetivos.push(tmpObjetivo);
         }
     }
     if(empresa.listaObjetivos.length !== 0) {
         creacionInputsP2();
-        console.log(empresa.listaObjetivos);
         cambiarVista("paso-2");
     }
     else {
@@ -93,42 +91,62 @@ function agregarObjetivosP1() {
     }
 }
 
-// Paso 2
 function creacionInputsP2() {
     let strPaso2 = "";
     for (o in empresa.listaObjetivos) {
         strPaso2 = strPaso2.concat("<p>" + empresa.listaObjetivos[o].descripcion + "</p>");
-        let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + "'><input type='text' placeholder='Explicación'>";
-        strPaso2 = strPaso2.concat("<div class='div-paso-2-2'>" + strInputs.repeat(5) + "</div>");   
+        strPaso2 = strPaso2.concat("<div class='div-paso-2-2'>");
+        for (let i=1; i<6; i++) {
+            let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " obj " + i + "'>" + 
+                            "<input type='text' placeholder='Explicación' class='" + empresa.listaObjetivos[o].id + " exp " + i + "'>";
+            strPaso2 = strPaso2.concat(strInputs);
+        }   
+        strPaso2 = strPaso2.concat("</div>");   
     }  
     document.getElementById('div-paso-2').innerHTML = strPaso2;
 }
 
-// Paso 3
-function creacionCheckBoxP3() {
-    let strPaso3 = "";
+function agregarProblemas() {
     for (o in empresa.listaObjetivos) {
-        let listaInputs = document.getElementsByClassName(o.id);
+        let strArgI = empresa.listaObjetivos[o].id.concat(" obj");
+        let listaInputs = document.getElementsByClassName(strArgI);
+        let strArgE = empresa.listaObjetivos[o].id.concat(" exp");
         for (let i=0; i<listaInputs.length; i++) {
             if(!isEmpty(listaInputs[i].value)) {
-                o.listaProblemas.push(listaInputs[i].value)
+                let strArgE2 = strArgE + " " + listaInputs[i].className.slice(-1);
+                let tmpExplicacion = document.getElementsByClassName(strArgE2);
+                let tmpProblema = crearProblema(idClases('P', contadorProblemas), listaInputs[i].value, tmpExplicacion[0].value);
+                empresa.listaObjetivos[o].listaProblemas.push(tmpProblema);
             }
         }
-        console.log(o);
-        if(o.listaProblemas.length !== 0) {
-            strPaso3 = strPaso3.concat("<p>" + o.descripcion + "</p>");
-        }
     }
-    
-    let strCheck = "<div><span>SI&nbsp</span><input type='checkbox'>&nbsp&nbsp&nbsp<span>NO&nbsp</span><input type='checkbox'> </div>"
-    for (p in listaProblemas) {
-        let strTmp = "<p>" + listaProblemas[p] + "</p>" + strCheck + "<input type='text'>";
-        strPaso3 = strPaso3.concat(strTmp);
-    }
-    document.getElementById('div-paso-3').innerHTML = strPaso3;
-
-    cambiarVista("paso-3");
 }
+
+// Paso 3
+// function creacionCheckBoxP3() {
+//     let strPaso3 = "";
+//     for (o in empresa.listaObjetivos) {
+//         let listaInputs = document.getElementsByClassName(o.id);
+//         for (let i=0; i<listaInputs.length; i++) {
+//             if(!isEmpty(listaInputs[i].value)) {
+//                 o.listaProblemas.push(listaInputs[i].value)
+//             }
+//         }
+//         console.log(o);
+//         if(o.listaProblemas.length !== 0) {
+//             strPaso3 = strPaso3.concat("<p>" + o.descripcion + "</p>");
+//         }
+//     }
+    
+//     let strCheck = "<div><span>SI&nbsp</span><input type='checkbox'>&nbsp&nbsp&nbsp<span>NO&nbsp</span><input type='checkbox'> </div>"
+//     for (p in listaProblemas) {
+//         let strTmp = "<p>" + listaProblemas[p] + "</p>" + strCheck + "<input type='text'>";
+//         strPaso3 = strPaso3.concat(strTmp);
+//     }
+//     document.getElementById('div-paso-3').innerHTML = strPaso3;
+
+//     cambiarVista("paso-3");
+// }
 
 // Cambiar de vista en el HTML
 let currentDiv = document.getElementById("paso-1")
