@@ -61,7 +61,7 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    text-align: center;
 }
 .contenido-paso-1 {
     overflow-x: hidden;
@@ -119,9 +119,20 @@ input {
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 20px 20px;
+    margin: 20px;
 }
 .card .contenido-paso-3 p {
     font-size: larger;
+}
+.columna-paso-3 {
+    display:flex;
+    flex-direction: row;
+    justify-content: end;
+    
+}
+
+.columna-paso-3 p{
+    align-self: center;
 }
 
 /* Botones parte inferior */

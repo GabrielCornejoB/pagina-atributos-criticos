@@ -48,7 +48,7 @@ function crearTermino(id, descripcionTermino) {
 }
 
 // Paso a paso
-let empresa = crearEmpresa("E001", "tmp", []);
+let empresa = crearEmpresa("E001", "Empresa de prueba", []);
 console.log(empresa);
 let contadorObjetivos = 1;
 let contadorProblemas = 1;
@@ -120,9 +120,27 @@ function agregarProblemas() {
             }
         }
     }
+    creacionCheckBoxP3();
+    cambiarVista("paso-3");  
 }
 
-// Paso 3
+function creacionCheckBoxP3() {
+    let strPaso3 = "";
+    for (o in empresa.listaObjetivos) {
+        let obj = empresa.listaObjetivos[o];
+        if(obj.listaProblemas.length !== 0) {
+            strPaso3 = strPaso3.concat("<p style='font-weight:bold'>Objetivo: " + empresa.listaObjetivos[o].descripcion + "</p><p></p><p></p>");
+            for(p in obj.listaProblemas) {
+                let prob = obj.listaProblemas[p];
+                strPaso3 = strPaso3.concat("<p>" + prob.descripcion + "</p>");
+                strPaso3 = strPaso3.concat("<div class='columna-paso-3'><p>SI&nbsp</p><input type='radio' name='r" + prob.id + "'>&nbsp&nbsp<p>NO&nbsp</p><input type='radio' name='r" + prob.id + "'> </div>");
+                strPaso3 = strPaso3.concat("<input type='text' placeholder='Explicación'>");
+            }
+            document.getElementById('div-paso-3').innerHTML = strPaso3;
+        }
+    }
+    cambiarVista("paso-3");
+}
 // function creacionCheckBoxP3() {
 //     let strPaso3 = "";
 //     for (o in empresa.listaObjetivos) {
