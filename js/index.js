@@ -13,7 +13,7 @@ function crearObjetivo(id, descripcionObjetivo, listaProblemas) {
         listaProblemas
     };
 }
-function crearProblema(id, descripcionProblema, explicacion, esDeDatos, explicacionDatos, valorTotal, listaDatos) {
+function crearProblema(id, descripcionProblema, explicacion, esDeDatos, explicacionDatos, valorTotal, listaDatos, explicacionEsDeDatos) {
     return {
         id,                             // Consecutivo: P001, P213, ...             
         descripcion: descripcionProblema,
@@ -22,6 +22,7 @@ function crearProblema(id, descripcionProblema, explicacion, esDeDatos, explicac
         explicacionDatos,
         valorTotal,
         listaDatos,
+        explicacionEsDeDatos
     };
 }
 function crearDato(id, descripcionDato, descripcionFinal, valorParticular) {
@@ -85,7 +86,6 @@ function agregarObjetivos() {
     }
     if(empresa.listaObjetivos.length !== 0) {
         generarPaso2();
-        cambiarVista("paso-2");
     }
     else {
         alert("Paso 1 incorrecto");
@@ -105,6 +105,7 @@ function generarPaso2() {
         strPaso2 = strPaso2.concat("</div>");   
     }  
     document.getElementById('div-paso-2').innerHTML = strPaso2;
+    cambiarVista("paso-2");
 }
 
 function agregarProblemas() {
@@ -129,18 +130,19 @@ function generarPaso3() {
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         if(obj.listaProblemas.length !== 0) {
-            strPaso3 = strPaso3.concat("<p style='font-weight:bold'>Objetivo: " + empresa.listaObjetivos[o].descripcion + "</p><p></p><p></p>");
+            strPaso3 = strPaso3.concat("<p style='font-weight:bold'>Objetivo: " + obj.descripcion + "</p><p></p><p></p>");
             for(p in obj.listaProblemas) {
                 let prob = obj.listaProblemas[p];
                 strPaso3 = strPaso3.concat("<p>" + prob.descripcion + "</p>");
                 let strClass = obj.id + " " + prob.id;
-                strPaso3 = strPaso3.concat("<div class='columna-paso-3'><p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + " rad'>" 
-                                            + "&nbsp&nbsp<p>NO&nbsp</p><input type='radio' name=r'" + prob.id+ "' value='No' class='" + strClass + " rad'> </div>");
+                strPaso3 = strPaso3.concat("<div class='columna-paso-3'>" + 
+                                            "<p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + " rad'>" +
+                                            "&nbsp&nbsp<p>NO&nbsp</p><input type='radio' name=r'" + prob.id+ "' value='No' class='" + strClass + " rad'> </div>");
                 strPaso3 = strPaso3.concat("<input type='text' placeholder='Explicación' class='" + strClass + " exp'>");
             }
-            document.getElementById('div-paso-3').innerHTML = strPaso3;
         }
     }
+    document.getElementById('div-paso-3').innerHTML = strPaso3;
     cambiarVista("paso-3");
 }
 
@@ -149,23 +151,59 @@ function agregarEsDatos() {
         let obj = empresa.listaObjetivos[o];
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
-            let strArgR = obj.id + " " + prob.id + " rad";
-            let radios = document.getElementsByClassName(strArgR);
-            let strArgE = obj.id + " " + prob.id + " exp";
-            let expDatos = document.getElementsByClassName(strArgE);
+            let radios = document.getElementsByClassName(obj.id + " " + prob.id + " rad");
+            let expDatos = document.getElementsByClassName(obj.id + " " + prob.id + " exp");
             if (radios[0].checked) {
                 prob.esDeDatos = radios[0].value;            
             }
             else {
                 prob.esDeDatos = radios[1].value;
             }
-            prob.explicacionDatos = expDatos[0].value;
+            prob.explicacionEsDeDatos = expDatos[0].value;
+        }
+    }
+    generarPaso4();
+}
+
+function generarPaso4() {
+    let strPaso4 = "";
+    for (o in empresa.listaObjetivos) {
+        let obj = empresa.listaObjetivos[o];
+        strPaso4 = strPaso4.concat("<p style='font-weight:bold' id='sub-paso-4-" + o + "'>" + obj.descripcion + "</p>");
+        for (p in obj.listaProblemas) {
+            let prob = obj.listaProblemas[p];
+            if (prob.esDeDatos === 'Si') {
+                let strClass = obj.id + " " + prob.id;
+                strPaso4 = strPaso4.concat("<p>" + prob.descripcion + "</p>")
+                strPaso4 = strPaso4.concat("<div class='fila-paso-4'><input type='text' placeholder='Datos involucrados' class='" + strClass + " dat'>" + 
+                                            "<input type='text' placeholder='Explicación' class='" + strClass + " expD'></div>");
+            }       
+        }       
+    }
+    document.getElementById('div-paso-4').innerHTML = strPaso4;
+    cambiarVista("paso-4");
+}
+
+function agregarDatos() {
+    for (o in empresa.listaObjetivos) {
+        let obj = empresa.listaObjetivos[o];
+        for (p in obj.listaProblemas) {
+            let prob = obj.listaProblemas[p];
+            // let strArgD = obj.id + " " + prob.id + " dat";
+            let datos = document.getElementsByClassName(obj.id + " " + prob.id + " dat");
+            let exp = document.getElementsByClassName(obj.id + " " + prob.id + " expD");
+            console.log(datos);
+            console.log(exp);
         }
     }
 }
 
-function generarPaso4() {
-    
+function generarPaso5() {
+    cambiarVista("paso-5");
+}
+
+function agregarImpactoFinanciero() {
+    alert("FIN");
 }
 
 // Cambiar de vista en el HTML

@@ -147,9 +147,16 @@ input {
     font-size: larger;
 }
 .div-paso-4 {
-    /* display */
     width: 80%;
-    margin: 20px;
+    display: grid;
+    grid-template-columns: auto;
+    margin: 20px 0;
+    row-gap: 15px;
+}
+.fila-paso-4 {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
 }
 
 /* Botones parte inferior */
