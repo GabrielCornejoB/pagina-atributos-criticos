@@ -110,15 +110,14 @@ function generarPaso2() {
 
 function agregarProblemas() {
     for (o in empresa.listaObjetivos) {
-        let strArgI = empresa.listaObjetivos[o].id.concat(" obj");
-        let listaInputs = document.getElementsByClassName(strArgI);
-        let strArgE = empresa.listaObjetivos[o].id.concat(" exp");
+        let obj = empresa.listaObjetivos[o];
+        let listaInputs = document.getElementsByClassName(obj.id + " obj");
         for (let i=0; i<listaInputs.length; i++) {
             if(!isEmpty(listaInputs[i].value)) {
-                let strArgE2 = strArgE + " " + listaInputs[i].className.slice(-1);
+                let strArgE2 = obj.id + " exp " + listaInputs[i].className.slice(-1);
                 let tmpExplicacion = document.getElementsByClassName(strArgE2);
                 let tmpProblema = crearProblema(idClases('P', contadorProblemas), listaInputs[i].value, tmpExplicacion[0].value);
-                empresa.listaObjetivos[o].listaProblemas.push(tmpProblema);
+                obj.listaProblemas.push(tmpProblema);
             }
         }
     }
@@ -189,11 +188,12 @@ function agregarDatos() {
         let obj = empresa.listaObjetivos[o];
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
-            // let strArgD = obj.id + " " + prob.id + " dat";
-            let datos = document.getElementsByClassName(obj.id + " " + prob.id + " dat");
-            let exp = document.getElementsByClassName(obj.id + " " + prob.id + " expD");
-            console.log(datos);
-            console.log(exp);
+            if (prob.esDeDatos === 'Si') {
+                let datos = document.getElementsByClassName(obj.id + " " + prob.id + " dat");
+                let exp = document.getElementsByClassName(obj.id + " " + prob.id + " expD");
+                console.log(datos);
+                console.log(exp);
+            }
         }
     }
 }
