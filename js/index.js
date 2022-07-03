@@ -77,11 +77,13 @@ function isEmpty(str) {
 }
 
 function generarTextArea() {
+    console.log("'generarTextArea()' called");
     let strTextArea = "<textarea cols='100' rows='3' class='input-paso-1' style='resize:none'></textarea>";
     document.getElementById("div-paso-1").insertAdjacentHTML('beforeend', strTextArea); 
 }
 
 function agregarObjetivos() {
+    console.log("'agregarObjetivos()' called");
     empresa.listaObjetivos = [];
     let listaInputs = document.getElementsByClassName("input-paso-1");
     for (let i=0; i<listaInputs.length; i++) {
@@ -99,6 +101,7 @@ function agregarObjetivos() {
 }
 
 function generarPaso2() {
+    console.log("'generarPaso2()' called");
     let strPaso2 = "";
     for (o in empresa.listaObjetivos) {
         strPaso2 = strPaso2.concat("<p>" + empresa.listaObjetivos[o].descripcion + "</p>");
@@ -115,6 +118,7 @@ function generarPaso2() {
 }
 
 function agregarProblemas() {
+    console.log("'agregarProblemas()' called");
     let explicacionesProblemasValidas = true;
     let alMenosUnProblema = false;
     for (o in empresa.listaObjetivos) {
@@ -148,6 +152,7 @@ function agregarProblemas() {
 }
 
 function generarPaso3() {
+    console.log("'generarPaso3()' called");
     let strPaso3 = "";
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
@@ -169,6 +174,7 @@ function generarPaso3() {
 }
 
 function agregarEsDatos() {
+    console.log("'agregarEsDatos()' called");
     let explicacionInvalida = false;
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
@@ -199,6 +205,7 @@ function agregarEsDatos() {
 }
 
 function generarPaso4() {
+    console.log("'generarPaso4()' called");
     let strPaso4 = "";
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
@@ -218,6 +225,7 @@ function generarPaso4() {
 }
 
 function agregarDatos() {
+    console.log("'agregarDatos()' called");
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         for (p in obj.listaProblemas) {
@@ -237,6 +245,7 @@ function agregarDatos() {
 }
 
 function generarPaso5() {
+    console.log("'generarPaso5()' called");
     let strPaso5 = "";
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
@@ -257,6 +266,7 @@ function generarPaso5() {
 }
 
 function logFinal() {
+    console.log("'logFinal()' called");
     cambiarVista("paso-5");
     console.log("Nombre empresa: " + empresa.nombre);
     console.log("Lista de objetivos estratégicos:");
