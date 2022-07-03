@@ -75,8 +75,10 @@
                     <div class="titulo">
                         <h1>Paso 5: Impacto financiero</h1>                       
                     </div>
-                    <div class="contenido">
-                        <p></p>         
+                    <div class="contenido contenido-paso-5">
+                        <p>A continuación determine por favor el impacto financiero que genera cada dificultad</p>    
+                        <div class="div-paso-5" id="div-paso-5"></div>  
+                        <button onclick='logFinal()' class="btn_confirmar">Finalizar</button>   
                     </div>     
                 </div>
             </div>
@@ -84,12 +86,13 @@
         <br>
         <div class="botones">
             <!-- apagar el onclick despues -->
+            <!-- onclick="cambiarVista('paso-')" -->
             <!-- o despues de mandarlo, bloquear los campos -->
-            <button class="btn" onclick="cambiarVista('paso-1')" id="btn-paso-1">PASO 1</button>
-            <button class="btn" onclick="cambiarVista('paso-2')" id="btn-paso-2">PASO 2</button>
-            <button class="btn" onclick="cambiarVista('paso-3')" id="btn-paso-3">PASO 3</button>
-            <button class="btn" onclick="cambiarVista('paso-4')" id="btn-paso-4">PASO 4</button>
-            <button class="btn" onclick="cambiarVista('paso-5')" id="btn-paso-5">PASO 5</button>
+            <button class="btn" id="btn-paso-1">PASO 1</button>
+            <button class="btn" id="btn-paso-2">PASO 2</button>
+            <button class="btn" id="btn-paso-3">PASO 3</button>
+            <button class="btn" id="btn-paso-4">PASO 4</button>
+            <button class="btn" id="btn-paso-5">PASO 5</button>
         </div>     
     </section>
     

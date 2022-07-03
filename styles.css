@@ -171,6 +171,31 @@ input {
     gap: 10px;
 }
 
+.card .contenido-paso-5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenido-paso-5 {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.card .contenido-paso-5 p {
+    font-size: larger;
+}
+.div-paso-5 {
+    width: 80%;
+    display: grid;
+    grid-template-columns: auto;
+    margin: 20px 0;
+    row-gap: 15px;
+}
+.fila-paso-5 {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+}
+
 /* Botones parte inferior */
 .botones {
     display: flex;

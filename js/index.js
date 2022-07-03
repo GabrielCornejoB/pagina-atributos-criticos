@@ -227,7 +227,7 @@ function agregarDatos() {
                 let exp = document.getElementsByClassName(obj.id + " " + prob.id + " expD");
                 let arregloDatos = datos[0].value.split(",");
                 for (let i=0; i<arregloDatos.length; i++) {
-                    prob.listaDatos.push(arregloDatos[i]);
+                    prob.listaDatos.push(arregloDatos[i].trim());
                 }
                 prob.explicacionDatos = exp[0].value;
             }
@@ -240,11 +240,20 @@ function generarPaso5() {
     let strPaso5 = "";
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
+        strPaso5 = strPaso5.concat("<p style='font-weight:bold'>" + obj.descripcion + "</p>");
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
+            if (prob.esDeDatos === "Si") {
+                strPaso5 = strPaso5.concat("<p>" + prob.descripcion + "</p>")
+                strPaso5 = strPaso5.concat("<div class='fila-paso-5'> <input type='text' placeholder='Frecuencia mensual'>" + 
+                                            "<input type='text' placeholder='Impacto mensual'>" + 
+                                            "<input type='text' placeholder='Impacto anual'>" + 
+                                            "<input type='text' placeholder='Explicación'> </div>");
+            }
         }
     }
-    logFinal();
+    document.getElementById('div-paso-5').innerHTML = strPaso5;
+    cambiarVista("paso-5");
 }
 
 function logFinal() {
