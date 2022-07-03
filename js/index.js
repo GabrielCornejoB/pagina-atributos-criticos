@@ -13,7 +13,7 @@ function crearObjetivo(id, descripcionObjetivo, listaProblemas) {
         listaProblemas
     };
 }
-function crearProblema(id, descripcionProblema, explicacion, esDeDatos, explicacionDatos, valorTotal, listaDatos, explicacionEsDeDatos) {
+function crearProblema(id, descripcionProblema, explicacion, listaDatos, esDeDatos, explicacionDatos, valorTotal,  explicacionEsDeDatos) {
     return {
         id,                             // Consecutivo: P001, P213, ...             
         descripcion: descripcionProblema,
@@ -116,7 +116,7 @@ function agregarProblemas() {
             if(!isEmpty(listaInputs[i].value)) {
                 let strArgE2 = obj.id + " exp " + listaInputs[i].className.slice(-1);
                 let tmpExplicacion = document.getElementsByClassName(strArgE2);
-                let tmpProblema = crearProblema(idClases('P', contadorProblemas), listaInputs[i].value, tmpExplicacion[0].value);
+                let tmpProblema = crearProblema(idClases('P', contadorProblemas), listaInputs[i].value, tmpExplicacion[0].value, []);
                 obj.listaProblemas.push(tmpProblema);
             }
         }
@@ -151,14 +151,14 @@ function agregarEsDatos() {
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
             let radios = document.getElementsByClassName(obj.id + " " + prob.id + " rad");
-            let expDatos = document.getElementsByClassName(obj.id + " " + prob.id + " exp");
+            let exp = document.getElementsByClassName(obj.id + " " + prob.id + " exp");
             if (radios[0].checked) {
                 prob.esDeDatos = radios[0].value;            
             }
             else {
                 prob.esDeDatos = radios[1].value;
             }
-            prob.explicacionEsDeDatos = expDatos[0].value;
+            prob.explicacionEsDeDatos = exp[0].value;
         }
     }
     generarPaso4();
@@ -191,8 +191,11 @@ function agregarDatos() {
             if (prob.esDeDatos === 'Si') {
                 let datos = document.getElementsByClassName(obj.id + " " + prob.id + " dat");
                 let exp = document.getElementsByClassName(obj.id + " " + prob.id + " expD");
-                console.log(datos);
-                console.log(exp);
+                let arregloDatos = datos[0].value.split(",");
+                for (let i=0; i<arregloDatos.length; i++) {
+                    prob.listaDatos.push(arregloDatos[i]);
+                }
+                prob.explicacionDatos = exp[0].value;
             }
         }
     }
