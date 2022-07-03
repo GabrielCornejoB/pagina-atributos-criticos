@@ -128,11 +128,11 @@ input {
     display:flex;
     flex-direction: row;
     justify-content: end;
-    
 }
 
 .columna-paso-3 p{
     align-self: center;
+    vertical-align: middle;
 }
 
 /* Botones parte inferior */
