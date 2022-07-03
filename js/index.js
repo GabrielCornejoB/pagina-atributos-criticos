@@ -125,9 +125,7 @@ function agregarProblemas() {
     cambiarVista("paso-3");  
 }
 
-// let listaRadioNames = [];
 function creacionCheckBoxP3() {
-    // listaRadioNames = []
     let strPaso3 = "";
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
@@ -136,12 +134,10 @@ function creacionCheckBoxP3() {
             for(p in obj.listaProblemas) {
                 let prob = obj.listaProblemas[p];
                 strPaso3 = strPaso3.concat("<p>" + prob.descripcion + "</p>");
-                // let strRadioName = "r" + prob.id;
-                let strClass = obj.id + " " + prob.id + " rad";
-                // listaRadioNames.push(strRadioName);
-                strPaso3 = strPaso3.concat("<div class='columna-paso-3'><p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + "'>" 
-                                            + "&nbsp&nbsp<p>NO&nbsp</p><input type='radio' name=r'" + prob.id+ "' value='No' class='" + strClass + "'> </div>");
-                strPaso3 = strPaso3.concat("<input type='text' placeholder='Explicación'>");
+                let strClass = obj.id + " " + prob.id;
+                strPaso3 = strPaso3.concat("<div class='columna-paso-3'><p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + " rad'>" 
+                                            + "&nbsp&nbsp<p>NO&nbsp</p><input type='radio' name=r'" + prob.id+ "' value='No' class='" + strClass + " rad'> </div>");
+                strPaso3 = strPaso3.concat("<input type='text' placeholder='Explicación' class='" + strClass + " exp'>");
             }
             document.getElementById('div-paso-3').innerHTML = strPaso3;
         }
@@ -154,21 +150,19 @@ function agregarEsDatos() {
         let obj = empresa.listaObjetivos[o];
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
-            let strArg = obj.id + " " + prob.id + " rad";
-            
+            let strArgR = obj.id + " " + prob.id + " rad";
+            let radios = document.getElementsByClassName(strArgR);
+            let strArgE = obj.id + " " + prob.id + " exp";
+            let expDatos = document.getElementsByClassName(strArgE);
+            if (radios[0].checked) {
+                prob.esDeDatos = radios[0].value;            
+            }
+            else {
+                prob.esDeDatos = radios[1].value;
+            }
+            prob.explicacionDatos = expDatos[0].value;
         }
     }
-
-
-    // for (rn in listaRadioNames) {
-    //     let radios = document.getElementsByName(listaRadioNames[rn]);
-    //     if (radios[0].checked) {
-    //         console.log(radios[0].value);
-    //     }
-    //     else {
-    //         console.log(radios[1].value);
-    //     }
-    // }
 }
 // function creacionCheckBoxP3() {
 //     let strPaso3 = "";
