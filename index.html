@@ -19,7 +19,7 @@
                     <div class="contenido contenido-paso-1">
                         <p>A continuación ingrese por favor los objetivos estratégicos del negocio que impactas o el objetivo estratégico de la unidad del negocio:</p>
                         <div class="div-paso-1" id="div-paso-1">
-                            <textarea cols="100" rows="3" class="input-paso-1"></textarea>
+                            <textarea cols="100" rows="3" class="input-paso-1" style='resize:none'></textarea>
                         </div>
                         <button onclick="generarTextArea()" class="btn-agregar"">+</button>
                         <button onclick="agregarObjetivos()" class="btn_confirmar">Confirmar</button>
@@ -83,11 +83,13 @@
         </div>
         <br>
         <div class="botones">
-            <button class="btn" id="btn-paso-1">PASO 1</button>
-            <button class="btn" id="btn-paso-2">PASO 2</button>
-            <button class="btn" id="btn-paso-3">PASO 3</button>
-            <button class="btn" id="btn-paso-4">PASO 4</button>
-            <button class="btn" id="btn-paso-5">PASO 5</button>
+            <!-- apagar el onclick despues -->
+            <!-- o despues de mandarlo, bloquear los campos -->
+            <button class="btn" onclick="cambiarVista('paso-1')" id="btn-paso-1">PASO 1</button>
+            <button class="btn" onclick="cambiarVista('paso-2')" id="btn-paso-2">PASO 2</button>
+            <button class="btn" onclick="cambiarVista('paso-3')" id="btn-paso-3">PASO 3</button>
+            <button class="btn" onclick="cambiarVista('paso-4')" id="btn-paso-4">PASO 4</button>
+            <button class="btn" onclick="cambiarVista('paso-5')" id="btn-paso-5">PASO 5</button>
         </div>     
     </section>
     

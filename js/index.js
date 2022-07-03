@@ -77,7 +77,7 @@ function isEmpty(str) {
 }
 
 function generarTextArea() {
-    let strTextArea = "<textarea cols='100' rows='3' class='input-paso-1'></textarea>";
+    let strTextArea = "<textarea cols='100' rows='3' class='input-paso-1' style='resize:none'></textarea>";
     document.getElementById("div-paso-1").insertAdjacentHTML('beforeend', strTextArea); 
 }
 
@@ -158,7 +158,7 @@ function generarPaso3() {
                 strPaso3 = strPaso3.concat("<p>" + prob.descripcion + "</p>");
                 let strClass = obj.id + " " + prob.id;
                 strPaso3 = strPaso3.concat("<div class='columna-paso-3'>" + 
-                                            "<p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + " rad'>" +
+                                            "<p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + " rad' checked>" +
                                             "&nbsp&nbsp<p>NO&nbsp</p><input type='radio' name=r'" + prob.id+ "' value='No' class='" + strClass + " rad'> </div>");
                 strPaso3 = strPaso3.concat("<input type='text' placeholder='Explicación' class='" + strClass + " exp'>");
             }
@@ -169,29 +169,40 @@ function generarPaso3() {
 }
 
 function agregarEsDatos() {
+    let explicacionInvalida = false;
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
             let radios = document.getElementsByClassName(obj.id + " " + prob.id + " rad");
             let exp = document.getElementsByClassName(obj.id + " " + prob.id + " exp");
-            if (radios[0].checked) {
-                prob.esDeDatos = radios[0].value;            
+            if(!isEmpty(exp[0].value)){
+                prob.explicacionEsDeDatos = exp[0].value;
+                if (radios[0].checked) {
+                    prob.esDeDatos = radios[0].value;            
+                }
+                else {
+                    prob.esDeDatos = radios[1].value;
+                }
             }
             else {
-                prob.esDeDatos = radios[1].value;
+                explicacionInvalida = true;
             }
-            prob.explicacionEsDeDatos = exp[0].value;
         }
     }
-    generarPaso4();
+    if(explicacionInvalida === false) {
+        generarPaso4();
+    }
+    else {
+        alert("Error: Debe colocar las descripciones para pasar al siguiente paso");
+    }
 }
 
 function generarPaso4() {
     let strPaso4 = "";
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
-        strPaso4 = strPaso4.concat("<p style='font-weight:bold' id='sub-paso-4-" + o + "'>" + obj.descripcion + "</p>");
+        strPaso4 = strPaso4.concat("<p style='font-weight:bold'>" + obj.descripcion + "</p>");
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
             if (prob.esDeDatos === 'Si') {
@@ -226,11 +237,37 @@ function agregarDatos() {
 }
 
 function generarPaso5() {
+    let strPaso5 = "";
+    for (o in empresa.listaObjetivos) {
+        let obj = empresa.listaObjetivos[o];
+        for (p in obj.listaProblemas) {
+            let prob = obj.listaProblemas[p];
+        }
+    }
+    logFinal();
+}
+
+function logFinal() {
     cambiarVista("paso-5");
+    console.log("Nombre empresa: " + empresa.nombre);
+    console.log("Lista de objetivos estratégicos:");
+    for(let i=0; i<empresa.listaObjetivos.length; i++) {
+        console.log(" - " + empresa.listaObjetivos[i].descripcion);
+        console.log("\tLista de aspectos problemáticos:");
+        for(let j=0; j<empresa.listaObjetivos[i].listaProblemas.length; j++) {
+            console.log("\t- " + empresa.listaObjetivos[i].listaProblemas[j].descripcion + " (Es de Datos: " + empresa.listaObjetivos[i].listaProblemas[j].esDeDatos + ")");
+            if(empresa.listaObjetivos[i].listaProblemas[j].esDeDatos === "Si") {
+                console.log("\t\tLista de datos:");
+                for(let k=0; k<empresa.listaObjetivos[i].listaProblemas[j].listaDatos.length; k++) {
+                    console.log("\t\t- " + empresa.listaObjetivos[i].listaProblemas[j].listaDatos[k]);
+                }
+            }
+        }
+    }
 }
 
 function agregarImpactoFinanciero() {
-    alert("FIN");
+    
 }
 
 // Cambiar de vista en el HTML

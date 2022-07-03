@@ -29,6 +29,14 @@ input {
     background-color: rebeccapurple;
     color: white;
 }
+.btn_confirmar:disabled {
+    border: 3px solid rgba(128, 128, 128, 0.226);
+    color: rgba(128, 128, 128, 0.226);
+    background-color: rgba(128, 128, 128, 0.226);
+}
+.btn_confirmar:disabled:hover {
+    color: rgba(128, 128, 128, 0.226);
+}
 .btn-agregar {
     padding: 2px 4px;
     margin-bottom: 20px;
@@ -178,9 +186,6 @@ input {
     color: white;
     font-size: 20px;
 }
-/* .botones button:hover {
-    background-color: rebeccapurple;
-} */
 
 /* ::-webkit-scrollbar {
     width: 20px;
