@@ -29,6 +29,10 @@ input {
     background-color: rebeccapurple;
     color: white;
 }
+.btn-agregar {
+    padding: 2px 4px;
+    margin-bottom: 20px;
+}
 
 .card {
     position: relative;
@@ -174,9 +178,9 @@ input {
     color: white;
     font-size: 20px;
 }
-.botones button:hover {
+/* .botones button:hover {
     background-color: rebeccapurple;
-}
+} */
 
 /* ::-webkit-scrollbar {
     width: 20px;

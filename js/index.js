@@ -49,7 +49,7 @@ function crearTermino(id, descripcionTermino) {
     };
 }
 
-// Paso a paso
+
 let empresa = crearEmpresa("E0001", "Empresa de prueba", []);
 console.log(empresa);
 let contadorObjetivos = 1;
@@ -75,6 +75,12 @@ function idClases(letra, numero) {
 function isEmpty(str) {
     return !str.trim().length;
 }
+
+function generarTextArea() {
+    let strTextArea = "<textarea cols='100' rows='3' class='input-paso-1'></textarea>";
+    document.getElementById("div-paso-1").insertAdjacentHTML('beforeend', strTextArea); 
+}
+
 function agregarObjetivos() {
     empresa.listaObjetivos = [];
     let listaInputs = document.getElementsByClassName("input-paso-1");
@@ -88,7 +94,7 @@ function agregarObjetivos() {
         generarPaso2();
     }
     else {
-        alert("Paso 1 incorrecto");
+        alert("Error: Debe llenar al menos un objetivo estratégico para continuar");
     }
 }
 
@@ -109,19 +115,36 @@ function generarPaso2() {
 }
 
 function agregarProblemas() {
+    let explicacionesProblemasValidas = true;
+    let alMenosUnProblema = false;
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
+        obj.listaProblemas = [];
         let listaInputs = document.getElementsByClassName(obj.id + " obj");
         for (let i=0; i<listaInputs.length; i++) {
             if(!isEmpty(listaInputs[i].value)) {
                 let strArgE2 = obj.id + " exp " + listaInputs[i].className.slice(-1);
                 let tmpExplicacion = document.getElementsByClassName(strArgE2);
-                let tmpProblema = crearProblema(idClases('P', contadorProblemas), listaInputs[i].value, tmpExplicacion[0].value, []);
-                obj.listaProblemas.push(tmpProblema);
+                if(!isEmpty(tmpExplicacion[0].value)) {
+                    let tmpProblema = crearProblema(idClases('P', contadorProblemas), listaInputs[i].value, tmpExplicacion[0].value, []);
+                    obj.listaProblemas.push(tmpProblema);
+                    alMenosUnProblema = true;
+                } 
+                else {
+                    explicacionesProblemasValidas = false;
+                }
             }
         }
     }
-    generarPaso3(); 
+    if(alMenosUnProblema === false) {
+        alert("Error: Debe colocar al menos un aspecto problemático para continuar");
+    }
+    else if(explicacionesProblemasValidas === false){
+        alert("Error: Debe colocar las descripciones de los aspectos problemáticos correctamente");
+    }
+    else {
+        generarPaso3();
+    }
 }
 
 function generarPaso3() {
@@ -199,6 +222,7 @@ function agregarDatos() {
             }
         }
     }
+    generarPaso5();
 }
 
 function generarPaso5() {
@@ -211,25 +235,15 @@ function agregarImpactoFinanciero() {
 
 // Cambiar de vista en el HTML
 let currentDiv = document.getElementById("paso-1")
+document.getElementById("btn-paso-1").style.backgroundColor = 'rebeccapurple';
 function cambiarVista(idDiv) {
     let div = document.getElementById(idDiv);
     if(div.hidden !== false) {
         currentDiv.hidden = true;
         div.hidden = false;
+        let idOld = currentDiv.id;
         currentDiv = div;
-
-        // Navegación (temporalmente bloqueada)
-        // if(listaObjetivos.length !== 0) {
-            
-        //     if( paso2Valido === true){
-                
-        //     }
-        //     else {
-        //         alert("Debe de responder el paso 2 de forma valida")
-        //     }
-        // }
-        // else {
-        //     alert("Primero debe realizar el paso 1")
-        // }
+        document.getElementById("btn-" + idDiv).style.backgroundColor = 'rebeccapurple';
+        document.getElementById("btn-" + idOld).style.backgroundColor = 'transparent';
     }
 }

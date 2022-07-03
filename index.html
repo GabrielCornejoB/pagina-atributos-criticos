@@ -18,19 +18,10 @@
                     </div>
                     <div class="contenido contenido-paso-1">
                         <p>A continuación ingrese por favor los objetivos estratégicos del negocio que impactas o el objetivo estratégico de la unidad del negocio:</p>
-                        <div class="div-paso-1">
-                            <textarea name="input-1-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
-                            <textarea name="input-2-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
-                            <textarea name="input-3-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
-                            <textarea name="input-4-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
-                            <textarea name="input-5-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
-                            <textarea name="input-6-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
-                            <textarea name="input-7-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
-                            <textarea name="input-8-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
-                            <textarea name="input-8-p-1"  cols="100" rows="3" class="input-paso-1"></textarea>
-                            <textarea name="input-10-p-1" cols="100" rows="3" class="input-paso-1"></textarea>
+                        <div class="div-paso-1" id="div-paso-1">
+                            <textarea cols="100" rows="3" class="input-paso-1"></textarea>
                         </div>
-                        <br>
+                        <button onclick="generarTextArea()" class="btn-agregar"">+</button>
                         <button onclick="agregarObjetivos()" class="btn_confirmar">Confirmar</button>
                     </div>     
                 </div>
@@ -92,11 +83,11 @@
         </div>
         <br>
         <div class="botones">
-            <button onclick="cambiarVista('paso-1')" class="btn">PASO 1</button>
-            <button onclick="cambiarVista('paso-2')" class="btn">PASO 2</button>
-            <button onclick="cambiarVista('paso-3')" class="btn">PASO 3</button>
-            <button onclick="cambiarVista('paso-4')" class="btn">PASO 4</button>
-            <button onclick="cambiarVista('paso-5')" class="btn">PASO 5</button>
+            <button class="btn" id="btn-paso-1">PASO 1</button>
+            <button class="btn" id="btn-paso-2">PASO 2</button>
+            <button class="btn" id="btn-paso-3">PASO 3</button>
+            <button class="btn" id="btn-paso-4">PASO 4</button>
+            <button class="btn" id="btn-paso-5">PASO 5</button>
         </div>     
     </section>
     
