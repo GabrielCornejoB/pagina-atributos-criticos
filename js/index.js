@@ -49,7 +49,7 @@ function crearTermino(id, descripcionTermino) {
 }
 
 // Paso a paso
-let empresa = crearEmpresa("E001", "Empresa de prueba", []);
+let empresa = crearEmpresa("E0001", "Empresa de prueba", []);
 console.log(empresa);
 let contadorObjetivos = 1;
 let contadorProblemas = 1;
@@ -84,7 +84,7 @@ function agregarObjetivos() {
         }
     }
     if(empresa.listaObjetivos.length !== 0) {
-        creacionInputsP2();
+        generarPaso2();
         cambiarVista("paso-2");
     }
     else {
@@ -92,7 +92,7 @@ function agregarObjetivos() {
     }
 }
 
-function creacionInputsP2() {
+function generarPaso2() {
     let strPaso2 = "";
     for (o in empresa.listaObjetivos) {
         strPaso2 = strPaso2.concat("<p>" + empresa.listaObjetivos[o].descripcion + "</p>");
@@ -121,11 +121,10 @@ function agregarProblemas() {
             }
         }
     }
-    creacionCheckBoxP3();
-    cambiarVista("paso-3");  
+    generarPaso3(); 
 }
 
-function creacionCheckBoxP3() {
+function generarPaso3() {
     let strPaso3 = "";
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
@@ -164,30 +163,10 @@ function agregarEsDatos() {
         }
     }
 }
-// function creacionCheckBoxP3() {
-//     let strPaso3 = "";
-//     for (o in empresa.listaObjetivos) {
-//         let listaInputs = document.getElementsByClassName(o.id);
-//         for (let i=0; i<listaInputs.length; i++) {
-//             if(!isEmpty(listaInputs[i].value)) {
-//                 o.listaProblemas.push(listaInputs[i].value)
-//             }
-//         }
-//         console.log(o);
-//         if(o.listaProblemas.length !== 0) {
-//             strPaso3 = strPaso3.concat("<p>" + o.descripcion + "</p>");
-//         }
-//     }
-    
-//     let strCheck = "<div><span>SI&nbsp</span><input type='checkbox'>&nbsp&nbsp&nbsp<span>NO&nbsp</span><input type='checkbox'> </div>"
-//     for (p in listaProblemas) {
-//         let strTmp = "<p>" + listaProblemas[p] + "</p>" + strCheck + "<input type='text'>";
-//         strPaso3 = strPaso3.concat(strTmp);
-//     }
-//     document.getElementById('div-paso-3').innerHTML = strPaso3;
 
-//     cambiarVista("paso-3");
-// }
+function generarPaso4() {
+    
+}
 
 // Cambiar de vista en el HTML
 let currentDiv = document.getElementById("paso-1")

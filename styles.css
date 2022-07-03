@@ -129,10 +129,27 @@ input {
     flex-direction: row;
     justify-content: end;
 }
-
 .columna-paso-3 p{
     align-self: center;
     vertical-align: middle;
+}
+
+.card .contenido-paso-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contenido-paso-4 {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.card .contenido-paso-4 p {
+    font-size: larger;
+}
+.div-paso-4 {
+    /* display */
+    width: 80%;
+    margin: 20px;
 }
 
 /* Botones parte inferior */
