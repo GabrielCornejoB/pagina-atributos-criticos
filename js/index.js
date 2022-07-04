@@ -82,7 +82,7 @@ function generarTextArea() {
     document.getElementById("div-paso-1").insertAdjacentHTML('beforeend', strTextArea); 
 }
 
-function validarTextAreas(nombreClase, idBoton) {
+function validarPaso1(nombreClase, idBoton) {
     let listaElementos = document.getElementsByClassName(nombreClase);
     let hayVacio = false;
     console.log(listaElementos.length);
@@ -92,8 +92,7 @@ function validarTextAreas(nombreClase, idBoton) {
         }
     }
     if (hayVacio === false) {
-        let botonSiguiente = document.getElementById(idBoton);
-        botonSiguiente.disabled = false;
+        agregarObjetivos();
     }
     else {
         alert("Aún faltan campos por llenar")
@@ -105,24 +104,10 @@ function agregarObjetivos() {
     empresa.listaObjetivos = [];
     let listaInputs = document.getElementsByClassName("input-paso-1");
     for (let i=0; i<listaInputs.length; i++) {
-        if(!isEmpty(listaInputs[i].value)) {
-            let tmpObjetivo = crearObjetivo(idClases('O', contadorObjetivos), listaInputs[i].value, []);
-            empresa.listaObjetivos.push(tmpObjetivo);
-        }
+        let tmpObjetivo = crearObjetivo(idClases('O', contadorObjetivos), listaInputs[i].value, []);
+        empresa.listaObjetivos.push(tmpObjetivo);      
     }
-    generarPaso2();
-    // if(empresa.listaObjetivos.length !== 0) {
-    //     generarPaso2();
-    // }
-    // else {
-    //     alert("Error: Debe llenar al menos un objetivo estratégico para continuar");
-    // }
-}
-
-function generarInput (idDiv) {
-    let div = document.getElementById(idDiv);
-    let strInputs = "<p>Hola</p>";
-    div.insertAdjacentHTML('beforeend', strInputs);
+    generarPaso2(); 
 }
 
 function generarPaso2() {
@@ -130,21 +115,27 @@ function generarPaso2() {
     let strPaso2 = "";
     for (o in empresa.listaObjetivos) {
         strPaso2 = strPaso2.concat("<p>" + empresa.listaObjetivos[o].descripcion + "</p>"); 
-        let idDiv =  "div-p2-";
-        strPaso2 = strPaso2.concat("<div class='div-paso-2-2' id='" + idDiv + "'>");
-        let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " obj " + 1 + "'>" + 
-                         "<input type='text' placeholder='Explicación' class='" + empresa.listaObjetivos[o].id + " exp " + 1 + "'>";
-        // for (let i=1; i<6; i++) {
-        //     let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " obj " + i + "'>" + 
-        //                     "<input type='text' placeholder='Explicación' class='" + empresa.listaObjetivos[o].id + " exp " + i + "'>";
-        //     strPaso2 = strPaso2.concat(strInputs);
-        // }  
-        strPaso2 = strPaso2.concat(strInputs); 
+        strPaso2 = strPaso2.concat("<div class='div-paso-2-2'>");    
+        for (let i=1; i<6; i++) {
+            let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " obj " + i + "'>" + 
+                            "<input type='text' placeholder='Explicación' class='" + empresa.listaObjetivos[o].id + " exp " + i + "'>";
+            strPaso2 = strPaso2.concat(strInputs);
+        }  
         strPaso2 = strPaso2.concat("</div>");  
-        strPaso2 = strPaso2.concat("<button onClick='generarInput(idDiv)' class='btn-agregar'>+</button>"); 
     }  
     document.getElementById('div-paso-2').innerHTML = strPaso2;
     cambiarVista("paso-2");
+}
+
+function validarPaso2() {
+    let listaProbs = document.getElementsByClassName('obj');
+    let listaExps = document.getElementsByClassName('exp');
+    let noExp = false;
+    for (let i=0; i<listaProbs.length; i++) {
+        if(!isEmpty(listaProbs[i].value)) {
+            let indice = listaProbs[i].className.slice(-1);
+        }
+    }
 }
 
 function agregarProblemas() {
@@ -195,7 +186,7 @@ function generarPaso3() {
                 strPaso3 = strPaso3.concat("<div class='columna-paso-3'>" + 
                                             "<p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + " rad' checked>" +
                                             "&nbsp&nbsp<p>NO&nbsp</p><input type='radio' name=r'" + prob.id+ "' value='No' class='" + strClass + " rad'> </div>");
-                strPaso3 = strPaso3.concat("<input type='text' placeholder='Explicación' class='" + strClass + " exp'>");
+                strPaso3 = strPaso3.concat("<input type='text' placeholder='Explicación' class='" + strClass + " exp2'>");
             }
         }
     }
@@ -211,7 +202,7 @@ function agregarEsDatos() {
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
             let radios = document.getElementsByClassName(obj.id + " " + prob.id + " rad");
-            let exp = document.getElementsByClassName(obj.id + " " + prob.id + " exp");
+            let exp = document.getElementsByClassName(obj.id + " " + prob.id + " exp2");
             if(!isEmpty(exp[0].value)){
                 prob.explicacionEsDeDatos = exp[0].value;
                 if (radios[0].checked) {
