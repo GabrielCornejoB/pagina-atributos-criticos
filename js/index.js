@@ -78,8 +78,26 @@ function isEmpty(str) {
 
 function generarTextArea() {
     console.log("'generarTextArea()' called");
-    let strTextArea = "<textarea cols='100' rows='3' class='input-paso-1' style='resize:none'></textarea>";
+    let strTextArea = "<textarea cols='100' rows='3' class='input-paso-1 p-1' style='resize:none'></textarea>";
     document.getElementById("div-paso-1").insertAdjacentHTML('beforeend', strTextArea); 
+}
+
+function validarTextAreas(nombreClase, idBoton) {
+    let listaElementos = document.getElementsByClassName(nombreClase);
+    let hayVacio = false;
+    console.log(listaElementos.length);
+    for (let i=0; i<listaElementos.length; i++) {
+        if(isEmpty(listaElementos[i].value)) {
+            hayVacio = true;
+        }
+    }
+    if (hayVacio === false) {
+        let botonSiguiente = document.getElementById(idBoton);
+        botonSiguiente.disabled = false;
+    }
+    else {
+        alert("Aún faltan campos por llenar")
+    }
 }
 
 function agregarObjetivos() {
@@ -92,26 +110,38 @@ function agregarObjetivos() {
             empresa.listaObjetivos.push(tmpObjetivo);
         }
     }
-    if(empresa.listaObjetivos.length !== 0) {
-        generarPaso2();
-    }
-    else {
-        alert("Error: Debe llenar al menos un objetivo estratégico para continuar");
-    }
+    generarPaso2();
+    // if(empresa.listaObjetivos.length !== 0) {
+    //     generarPaso2();
+    // }
+    // else {
+    //     alert("Error: Debe llenar al menos un objetivo estratégico para continuar");
+    // }
+}
+
+function generarInput (idDiv) {
+    let div = document.getElementById(idDiv);
+    let strInputs = "<p>Hola</p>";
+    div.insertAdjacentHTML('beforeend', strInputs);
 }
 
 function generarPaso2() {
     console.log("'generarPaso2()' called");
     let strPaso2 = "";
     for (o in empresa.listaObjetivos) {
-        strPaso2 = strPaso2.concat("<p>" + empresa.listaObjetivos[o].descripcion + "</p>");
-        strPaso2 = strPaso2.concat("<div class='div-paso-2-2'>");
-        for (let i=1; i<6; i++) {
-            let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " obj " + i + "'>" + 
-                            "<input type='text' placeholder='Explicación' class='" + empresa.listaObjetivos[o].id + " exp " + i + "'>";
-            strPaso2 = strPaso2.concat(strInputs);
-        }   
-        strPaso2 = strPaso2.concat("</div>");   
+        strPaso2 = strPaso2.concat("<p>" + empresa.listaObjetivos[o].descripcion + "</p>"); 
+        let idDiv =  "div-p2-";
+        strPaso2 = strPaso2.concat("<div class='div-paso-2-2' id='" + idDiv + "'>");
+        let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " obj " + 1 + "'>" + 
+                         "<input type='text' placeholder='Explicación' class='" + empresa.listaObjetivos[o].id + " exp " + 1 + "'>";
+        // for (let i=1; i<6; i++) {
+        //     let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " obj " + i + "'>" + 
+        //                     "<input type='text' placeholder='Explicación' class='" + empresa.listaObjetivos[o].id + " exp " + i + "'>";
+        //     strPaso2 = strPaso2.concat(strInputs);
+        // }  
+        strPaso2 = strPaso2.concat(strInputs); 
+        strPaso2 = strPaso2.concat("</div>");  
+        strPaso2 = strPaso2.concat("<button onClick='generarInput(idDiv)' class='btn-agregar'>+</button>"); 
     }  
     document.getElementById('div-paso-2').innerHTML = strPaso2;
     cambiarVista("paso-2");
