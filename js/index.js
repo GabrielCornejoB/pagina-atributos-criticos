@@ -247,6 +247,24 @@ function generarPaso4() {
     cambiarVista("paso-4");
 }
 
+function validarPaso4() {
+    console.log("'validarPaso4()' called");
+    let listaDatosI = document.getElementsByClassName("dat");
+    let listaExpsD = document.getElementsByClassName("expD");
+    let faltaCampo = false;
+    for (let i=0; i<listaDatosI.length; i++) {
+        if(isEmpty(listaDatosI[i].value) || isEmpty(listaExpsD[i].value)) {
+            faltaCampo = true;
+        }
+    }
+    if(faltaCampo === false) {
+        agregarDatos();
+    }
+    else {
+        alert("Aún faltan campos por llenar");
+    }
+}
+
 function agregarDatos() {
     console.log("'agregarDatos()' called");
     for (o in empresa.listaObjetivos) {
