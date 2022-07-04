@@ -83,6 +83,7 @@ function generarTextArea() {
 }
 
 function validarPaso1() {
+    console.log("'validarPaso1()' called");
     let listaElementos = document.getElementsByClassName('p-1');
     let hayVacio = false;
     console.log(listaElementos.length);
@@ -128,6 +129,7 @@ function generarPaso2() {
 }
 
 function validarPaso2() {
+    console.log("'validarPaso2()' called");
     let listaProbs = document.getElementsByClassName('pro');
     let noHayExps = false;
     let hayProbs = false;
@@ -150,8 +152,6 @@ function validarPaso2() {
 
 function agregarProblemas() {
     console.log("'agregarProblemas()' called");
-    let explicacionesProblemasValidas = true;
-    let alMenosUnProblema = false;
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         obj.listaProblemas = [];
@@ -190,35 +190,41 @@ function generarPaso3() {
     cambiarVista("paso-3");
 }
 
+function validarPaso3() {
+    console.log("'validarPaso3()' called");
+    let listaExps = document.getElementsByClassName("exp2");
+    let expVacia = false;
+    for (let i=0; i<listaExps.length; i++) {
+        if(isEmpty(listaExps[i].value)) {
+            expVacia = true;
+        }
+    }
+    if(expVacia === false) {
+        agregarEsDatos();
+    }
+    else {
+        alert("Aún faltan campos por llenar");
+    }
+}
+
 function agregarEsDatos() {
     console.log("'agregarEsDatos()' called");
-    let explicacionInvalida = false;
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
             let radios = document.getElementsByClassName(obj.id + " " + prob.id + " rad");
             let exp = document.getElementsByClassName(obj.id + " " + prob.id + " exp2");
-            if(!isEmpty(exp[0].value)){
-                prob.explicacionEsDeDatos = exp[0].value;
-                if (radios[0].checked) {
-                    prob.esDeDatos = radios[0].value;            
-                }
-                else {
-                    prob.esDeDatos = radios[1].value;
-                }
+            prob.explicacionEsDeDatos = exp[0].value;
+            if (radios[0].checked) {
+                prob.esDeDatos = radios[0].value;            
             }
             else {
-                explicacionInvalida = true;
+                prob.esDeDatos = radios[1].value;
             }
         }
     }
-    if(explicacionInvalida === false) {
-        generarPaso4();
-    }
-    else {
-        alert("Error: Debe colocar las descripciones para pasar al siguiente paso");
-    }
+    generarPaso4();
 }
 
 function generarPaso4() {
