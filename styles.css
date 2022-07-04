@@ -147,6 +147,7 @@ input {
     vertical-align: middle;
 }
 
+/* Paso 4 */
 .card .contenido-paso-4 {
     display: flex;
     flex-direction: column;
@@ -172,6 +173,7 @@ input {
     gap: 10px;
 }
 
+/* Paso 5 */
 .card .contenido-paso-5 {
     display: flex;
     flex-direction: column;
