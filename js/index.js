@@ -82,8 +82,8 @@ function generarTextArea() {
     document.getElementById("div-paso-1").insertAdjacentHTML('beforeend', strTextArea); 
 }
 
-function validarPaso1(nombreClase, idBoton) {
-    let listaElementos = document.getElementsByClassName(nombreClase);
+function validarPaso1() {
+    let listaElementos = document.getElementsByClassName('p-1');
     let hayVacio = false;
     console.log(listaElementos.length);
     for (let i=0; i<listaElementos.length; i++) {
@@ -117,7 +117,7 @@ function generarPaso2() {
         strPaso2 = strPaso2.concat("<p>" + empresa.listaObjetivos[o].descripcion + "</p>"); 
         strPaso2 = strPaso2.concat("<div class='div-paso-2-2'>");    
         for (let i=1; i<6; i++) {
-            let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " obj " + i + "'>" + 
+            let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " pro " + i + "'>" + 
                             "<input type='text' placeholder='Explicación' class='" + empresa.listaObjetivos[o].id + " exp " + i + "'>";
             strPaso2 = strPaso2.concat(strInputs);
         }  
@@ -128,13 +128,23 @@ function generarPaso2() {
 }
 
 function validarPaso2() {
-    let listaProbs = document.getElementsByClassName('obj');
-    let listaExps = document.getElementsByClassName('exp');
-    let noExp = false;
+    let listaProbs = document.getElementsByClassName('pro');
+    let noHayExps = false;
+    let hayProbs = false;
     for (let i=0; i<listaProbs.length; i++) {
         if(!isEmpty(listaProbs[i].value)) {
-            let indice = listaProbs[i].className.slice(-1);
+            let tmpExp = document.getElementsByClassName(listaProbs[i].className.slice(0,6) + "exp " + listaProbs[i].className.slice(-1));
+            if(isEmpty(tmpExp[0].value)) {
+                noHayExps = true;
+            }
+            hayProbs = true;
         }
+    }
+    if(noHayExps === false && hayProbs === true) {
+        agregarProblemas();
+    }
+    else {
+        alert("Aún faltan campos por llenar");
     }
 }
 
@@ -145,31 +155,17 @@ function agregarProblemas() {
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         obj.listaProblemas = [];
-        let listaInputs = document.getElementsByClassName(obj.id + " obj");
+        let listaInputs = document.getElementsByClassName(obj.id + " pro");
         for (let i=0; i<listaInputs.length; i++) {
             if(!isEmpty(listaInputs[i].value)) {
                 let strArgE2 = obj.id + " exp " + listaInputs[i].className.slice(-1);
                 let tmpExplicacion = document.getElementsByClassName(strArgE2);
-                if(!isEmpty(tmpExplicacion[0].value)) {
-                    let tmpProblema = crearProblema(idClases('P', contadorProblemas), listaInputs[i].value, tmpExplicacion[0].value, []);
-                    obj.listaProblemas.push(tmpProblema);
-                    alMenosUnProblema = true;
-                } 
-                else {
-                    explicacionesProblemasValidas = false;
-                }
-            }
+                let tmpProblema = crearProblema(idClases('P', contadorProblemas), listaInputs[i].value, tmpExplicacion[0].value, []);
+                obj.listaProblemas.push(tmpProblema);
+            }         
         }
-    }
-    if(alMenosUnProblema === false) {
-        alert("Error: Debe colocar al menos un aspecto problemático para continuar");
-    }
-    else if(explicacionesProblemasValidas === false){
-        alert("Error: Debe colocar las descripciones de los aspectos problemáticos correctamente");
-    }
-    else {
-        generarPaso3();
-    }
+    }    
+    generarPaso3();   
 }
 
 function generarPaso3() {
