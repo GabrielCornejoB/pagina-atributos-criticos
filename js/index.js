@@ -146,7 +146,12 @@ function validarPaso2() {
         agregarProblemas();
     }
     else {
-        alert("Aún faltan campos por llenar");
+        if(hayProbs === false) {
+            alert("Debe colocar al menos un aspecto problemático para continuar al siguiente paso.");
+        }
+        else if(noHayExps === true) {
+            alert("Debe colocar una explicación por cada aspecto problemático que ingresó.");
+        }
     }
 }
 

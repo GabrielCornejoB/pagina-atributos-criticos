@@ -78,6 +78,7 @@ input {
 /* Paso 1 */
 .card .contenido-paso-1 p {
     font-size: larger;
+    /* align-content: center; */
 }
 .card .contenido-paso-1 {
     display: flex;
@@ -105,6 +106,7 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 .contenido-paso-2 {
     overflow-x: hidden;
@@ -118,6 +120,7 @@ input {
     display: grid;
     grid-template-columns: auto;
     margin: 20px;
+    text-align: left;
 }
 .div-paso-2-2 {
     display: grid;
@@ -131,6 +134,7 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 .contenido-paso-3 {
     overflow-x: hidden;
@@ -142,6 +146,7 @@ input {
     grid-template-columns: auto auto auto;
     gap: 20px 20px;
     margin: 20px;
+    text-align: left;
 }
 .card .contenido-paso-3 p {
     font-size: larger;
@@ -161,6 +166,7 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 .contenido-paso-4 {
     overflow-x: hidden;
@@ -175,6 +181,7 @@ input {
     grid-template-columns: auto;
     margin: 20px 0;
     row-gap: 15px;
+    text-align: left;
 }
 .fila-paso-4 {
     display: grid;

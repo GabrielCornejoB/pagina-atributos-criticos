@@ -17,7 +17,9 @@
                         <h1>Paso 1: Identificación de objetivos estrategicos</h1>                       
                     </div>
                     <div class="contenido contenido-paso-1">
-                        <p>A continuación ingrese por favor los objetivos estratégicos del negocio que impactas o el objetivo estratégico de la unidad del negocio:</p>
+                        <p>Ingrese por favor los objetivos estratégicos del negocio que impactas o el objetivo estratégico de la unidad del negocio. Puede agregar más campos de texto presionando
+                            el boton "[+]", una vez haya llenado los campos puede presionar el botón "Confirmar".
+                        </p>
                         <div class="div-paso-1" id="div-paso-1">
                             <textarea cols="100" rows="3" class="input-paso-1 p-1" style='resize:none'></textarea>
                         </div>
@@ -34,7 +36,7 @@
                         <h1>Paso 2: Identificación de aspectos problemáticos</h1>                       
                     </div>
                     <div class="contenido contenido-paso-2" >
-                        <p>A continuación ingrese por favor los aspectos problemáticos que dificultan la consecución de cada objetivo:</p>
+                        <p>Ingrese por favor los aspectos problemáticos que dificultan la consecución de cada objetivo, debe escribir una justificación por cada aspecto problemático que coloque.</p>
                         <div id="div-paso-2" class="div-paso-2"></div>                      
                         <button onclick="validarPaso2()" class="btn_confirmar">Confirmar</button>          
                     </div>     
@@ -48,7 +50,7 @@
                         <h1>Paso 3: Origen de los aspectos problemáticos</h1>                       
                     </div>
                     <div class="contenido contenido-paso-3">
-                        <p>A continuación seleccione por favor que aspectos problemáticos son originados por calidad de datos:</p><br>
+                        <p>Seleccione 'SI' o 'NO' dependiendo si el aspecto problemático es generado o no por calidad de datos, además justifique esta respuesta.</p><br>
                         <div id="div-paso-3" class="div-paso-3"></div> 
                         <button onclick='validarPaso3()' class="btn_confirmar">Confirmar</button>
                     </div>     
@@ -62,7 +64,9 @@
                         <h1>Paso 4: Identificación de los datos involucrados </h1>                       
                     </div>
                     <div class="contenido contenido-paso-4">
-                        <p>A continuación ingrese por favor los datos involucrados en los aspectos problemáticos causados por calidad de datos:</p>
+                        <p>Identifique por favor los datos involucrados en los aspectos problemáticos causados por calidad de datos, debe colocar al menos 1 dato por cada aspecto problemático, puede elegir los datos
+                            ya predefinidos o escribir nuevos, y despues debe justificar porque estos datos son los que causan el aspecto problemático.
+                        </p>
                         <div class="div-paso-4" id="div-paso-4"></div>
                         <datalist id="l-datos">
                             <option value="Celular">
