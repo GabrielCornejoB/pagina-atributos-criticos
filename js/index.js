@@ -86,7 +86,6 @@ function validarPaso1() {
     console.log("'validarPaso1()' called");
     let listaElementos = document.getElementsByClassName('p-1');
     let hayVacio = false;
-    console.log(listaElementos.length);
     for (let i=0; i<listaElementos.length; i++) {
         if(isEmpty(listaElementos[i].value)) {
             hayVacio = true;
@@ -258,10 +257,20 @@ function validarPaso4() {
     let listaDatosI = document.getElementsByClassName("dat");
     let listaExpsD = document.getElementsByClassName("expD");
     let faltaCampo = false;
-    for (let i=0; i<listaDatosI.length; i++) {
-        if(isEmpty(listaDatosI[i].value) || isEmpty(listaExpsD[i].value)) {
+    for (let i=0; i<listaExpsD.length; i++) {
+        if(isEmpty(listaExpsD[i].value)) {
             faltaCampo = true;
         }
+    }
+    let minDatos = listaDatosI.length/6;
+    let cantDatos = 0;
+    for (let i=0; i<listaDatosI.length; i++) {
+        if(!isEmpty(listaDatosI[i].value)) {
+            cantDatos++;
+        }
+    }
+    if(cantDatos < minDatos) {
+        faltaCampo = true;
     }
     if(faltaCampo === false) {
         agregarDatos();
@@ -280,9 +289,10 @@ function agregarDatos() {
             if (prob.esDeDatos === 'Si') {
                 let datos = document.getElementsByClassName(obj.id + " " + prob.id + " dat");
                 let exp = document.getElementsByClassName(obj.id + " " + prob.id + " expD");
-                let arregloDatos = datos[0].value.split(",");
-                for (let i=0; i<arregloDatos.length; i++) {
-                    prob.listaDatos.push(arregloDatos[i].trim());
+                for (let i=0; i<datos.length; i++) {
+                    if(!isEmpty(datos[i].value)) {
+                        prob.listaDatos.push(datos[i].value);
+                    }
                 }
                 prob.explicacionDatos = exp[0].value;
             }
