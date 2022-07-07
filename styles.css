@@ -211,7 +211,7 @@ input {
     font-size: larger;
 }
 .div-paso-5 {
-    width: 80%;
+    width: 90%;
     display: grid;
     grid-template-columns: auto;
     margin: 20px 0;
@@ -219,9 +219,11 @@ input {
 }
 .fila-paso-5 {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 100px 70px 150px 150px auto;
     gap: 10px;
+    align-items: center;
 }
+
 
 /* Botones parte inferior */
 .botones {

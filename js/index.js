@@ -114,7 +114,7 @@ function generarPaso2() {
     console.log("'generarPaso2()' called");
     let strPaso2 = "";
     for (o in empresa.listaObjetivos) {
-        strPaso2 = strPaso2.concat("<p>" + empresa.listaObjetivos[o].descripcion + "</p>"); 
+        strPaso2 = strPaso2.concat("<p style='font-weight:bold'>Objetivo:" + empresa.listaObjetivos[o].descripcion + "</p>"); 
         strPaso2 = strPaso2.concat("<div class='div-paso-2-2'>");    
         for (let i=1; i<6; i++) {
             let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " pro " + i + "'>" + 
@@ -311,12 +311,17 @@ function generarPaso5() {
             let prob = obj.listaProblemas[p];
             if (prob.esDeDatos === "Si") {
                 strPaso5 = strPaso5.concat("<p>" + prob.descripcion + "</p>")
-                strPaso5 = strPaso5.concat("<div class='fila-paso-5'> <input type='text' placeholder='Frecuencia mensual'>" + 
-                                            "<input type='text' placeholder='Impacto mensual'>" + 
-                                            "<input type='text' placeholder='Impacto anual'>" + 
-                                            "<input type='text' placeholder='Explicación'> </div>");
-            }
+                for (d in prob.listaDatos) {
+                    strPaso5 = strPaso5.concat("<div class='fila-paso-5'>" + 
+                                                "<p style='font-size:small'>" + prob.listaDatos[d] + "</p>" + 
+                                                "<input type='text' placeholder='Frec/mes'>" + 
+                                                "<input type='text' placeholder='Impacto mensual'>" + 
+                                                "<input type='text' placeholder='Impacto anual'>" + 
+                                                "<input type='text' placeholder='Explicación'> </div>");
+                }
+            }           
         }
+        strPaso5 = strPaso5.concat("<hr>");
     }
     document.getElementById('div-paso-5').innerHTML = strPaso5;
     cambiarVista("paso-5");
