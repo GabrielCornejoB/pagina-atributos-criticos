@@ -238,8 +238,9 @@ function generarPaso4() {
             if (prob.esDeDatos === 'Si') {
                 let strClass = obj.id + " " + prob.id;
                 strPaso4 = strPaso4.concat("<p>" + prob.descripcion + "</p>")
-                strPaso4 = strPaso4.concat("<div class='fila-paso-4'><input type='text' placeholder='Datos involucrados' class='" + strClass + " dat'>" + 
-                                            "<input type='text' placeholder='Explicación' class='" + strClass + " expD'></div>");
+                strDataList = "<input list='l-datos' placeholder='Datos involucrados' class='" + strClass + " dat'>";
+                strPaso4 = strPaso4.concat("<div class='fila-paso-4'>" + "<div class='datos-paso-4'>" + strDataList.repeat(6) + "</div>" +
+                                            "<textarea placeholder='Explicación' class='" + strClass + " expD' style='resize:none'></textarea></div>");
             }       
         }       
     }
@@ -332,15 +333,15 @@ function agregarImpactoFinanciero() {
 
 // Cambiar de vista en el HTML
 let currentDiv = document.getElementById("paso-1")
-document.getElementById("btn-paso-1").style.backgroundColor = 'rebeccapurple';
+document.getElementById("btn-paso-1").disabled = true;
 function cambiarVista(idDiv) {
     let div = document.getElementById(idDiv);
     if(div.hidden !== false) {
+        let idOld = currentDiv.id;
         currentDiv.hidden = true;
         div.hidden = false;
-        let idOld = currentDiv.id;
         currentDiv = div;
-        document.getElementById("btn-" + idDiv).style.backgroundColor = 'rebeccapurple';
-        document.getElementById("btn-" + idOld).style.backgroundColor = 'transparent';
+        document.getElementById("btn-" + idDiv).disabled = true;
+        document.getElementById("btn-" + idOld).disabled = false;
     }
 }

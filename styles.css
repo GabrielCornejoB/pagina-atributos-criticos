@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
+:root {
+    --principal: #006400;
+    /* Morado:  663399 */
+    /* Verde:   006400 */
+    /* Verde 2: 32cd32 */
+    /* Azul:    6495ed */
+    /* Rojo:    8a0000 */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -20,14 +29,14 @@ input {
 .btn_confirmar {
     padding: 5px 10px;
     background-color: transparent;
-    border: 3px solid rebeccapurple;
+    border: 3px solid var(--principal);
     color: black;
     font-size: 15px;
     font-weight: 550;
     margin-bottom: 20px;
 }
 .btn_confirmar:hover {
-    background-color: rebeccapurple;
+    background-color: var(--principal);
     color: white;
 }
 .btn_confirmar:disabled {
@@ -49,7 +58,7 @@ input {
 }
 .card .titulo {
     width: 1080px;
-    background: rebeccapurple;
+    background: var(--principal);
     padding: 20px;
     border-radius: 20px 20px 0 0;
     color: white;
@@ -172,6 +181,14 @@ input {
     grid-template-columns: auto auto;
     gap: 10px;
 }
+.datos-paso-4 {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+.div-paso-4 textarea {
+    padding: 5px 10px;
+}
 
 /* Paso 5 */
 .card .contenido-paso-5 {
@@ -210,9 +227,15 @@ input {
 .botones button {
     padding: 10px 24px;
     background-color: transparent;
-    border: 3px solid rebeccapurple;
+    border: 3px solid var(--principal);
     color: white;
     font-size: 20px;
+}
+.botones button:disabled {
+    background-color: var(--principal);
+}
+.botones button:enabled {
+    background-color: transparent;
 }
 
 /* ::-webkit-scrollbar {
