@@ -387,6 +387,7 @@ function agregarImpactoFinanciero() {
             prob.valorTotalAnual = tmpValorTotal;
         }
     }
+    cambiarVista("informe-final");
 }
 
 function logFinal() {
@@ -409,6 +410,9 @@ function logFinal() {
     }
 }
 
+function generarInformeFinal() {
+    
+}
 // Cambiar de vista en el HTML
 let currentDiv = document.getElementById("paso-1")
 document.getElementById("btn-paso-1").disabled = true;
