@@ -51,8 +51,8 @@ function crearTermino(id, descripcionTermino) {
     };
 }
 
-
-let empresa = crearEmpresa("E0001", "Empresa de prueba", []);
+// let nombreEmpresa = prompt("Ingrese el nombre de la empresa");
+let empresa = crearEmpresa("E0001", "Empresa prueba", []);
 console.log(empresa);
 let contadorObjetivos = 1;
 let contadorProblemas = 1;

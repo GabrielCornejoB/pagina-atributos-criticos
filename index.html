@@ -4,107 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="shortcut icon" href="#" />
+    <title>Inicio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <section>
-        <div class="container" id="paso-1">
-            <div class="content">
-                <div class="card"> 
-                    <div class="titulo">
-                        <h1>Paso 1: Identificación de objetivos estrategicos</h1>                       
-                    </div>
-                    <div class="contenido contenido-paso-1">
-                        <p>Ingrese por favor los objetivos estratégicos del negocio que impactas o el objetivo estratégico de la unidad del negocio. Puede agregar más campos de texto presionando
-                            el boton "[+]", una vez haya llenado los campos puede presionar el botón "Confirmar".
-                        </p>
-                        <div class="div-paso-1" id="div-paso-1">
-                            <textarea cols="100" rows="3" class="input-paso-1 p-1" style='resize:none'></textarea>
-                        </div>
-                        <button onclick="generarTextArea()" class="btn-agregar"">+</button>
-                        <button onclick="validarPaso1()" class="btn_confirmar">Confirmar</button>
-                    </div>     
-                </div>
-            </div>
+    <div class="div-inicio">
+        <div class="iconos">
+            <img src="https://seeklogo.com/images/U/upb-logo-A2CF08C960-seeklogo.com.png" alt="">
+            
         </div>
-        <div class="container" id="paso-2" hidden>
-            <div class="content">
-                <div class="card"> 
-                    <div class="titulo">
-                        <h1>Paso 2: Identificación de aspectos problemáticos</h1>                       
-                    </div>
-                    <div class="contenido contenido-paso-2" >
-                        <p>Ingrese por favor los aspectos problemáticos que dificultan la consecución de cada objetivo, debe escribir una justificación por cada aspecto problemático que coloque.</p>
-                        <div id="div-paso-2" class="div-paso-2"></div>                      
-                        <button onclick="validarPaso2()" class="btn_confirmar">Confirmar</button>          
-                    </div>     
-                </div>
-            </div>
-        </div>
-        <div class="container" id="paso-3" hidden>
-            <div class="content">
-                <div class="card"> 
-                    <div class="titulo">
-                        <h1>Paso 3: Origen de los aspectos problemáticos</h1>                       
-                    </div>
-                    <div class="contenido contenido-paso-3">
-                        <p>Seleccione 'SI' o 'NO' dependiendo si el aspecto problemático es generado o no por calidad de datos, además justifique esta respuesta.</p><br>
-                        <div id="div-paso-3" class="div-paso-3"></div> 
-                        <button onclick='validarPaso3()' class="btn_confirmar">Confirmar</button>
-                    </div>     
-                </div>
-            </div>
-        </div>
-        <div class="container" id="paso-4" hidden>
-            <div class="content">
-                <div class="card"> 
-                    <div class="titulo">
-                        <h1>Paso 4: Identificación de los datos involucrados </h1>                       
-                    </div>
-                    <div class="contenido contenido-paso-4">
-                        <p>Identifique por favor los datos involucrados en los aspectos problemáticos causados por calidad de datos, debe colocar al menos 1 dato por cada aspecto problemático, puede elegir los datos
-                            ya predefinidos o escribir nuevos, y despues debe justificar porque estos datos son los que causan el aspecto problemático.
-                        </p>
-                        <div class="div-paso-4" id="div-paso-4"></div>
-                        <datalist id="l-datos">
-                            <option value="Celular">
-                            <option value="Nombre">
-                            <option value="Direccion">
-                            <option value="Precio">
-                            <option value="Cantidad">
-                        </datalist>
-                        <button onclick='validarPaso4()' class="btn_confirmar">Confirmar</button>
-                    </div>     
-                </div>
-            </div>
-        </div>
-        <div class="container" id="paso-5" hidden>
-            <div class="content">
-                <div class="card"> 
-                    <div class="titulo">
-                        <h1>Paso 5: Impacto financiero</h1>                       
-                    </div>
-                    <div class="contenido contenido-paso-5">
-                        <p>Determine por favor el impacto financiero que genera cada dato, en la primera casilla debe ingresar la frecuencia mensual, en la segunda casilla el impacto mensual económico
-                            y en la ultima la justificación de estos valores.</p>    
-                        <div class="div-paso-5" id="div-paso-5"></div>  
-                        <button onclick='validarPaso5()' class="btn_confirmar">Finalizar</button>   
-                    </div>     
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="botones">
-            <button class="btn" id="btn-paso-1" >PASO 1</button>
-            <button class="btn" id="btn-paso-2" >PASO 2</button>
-            <button class="btn" id="btn-paso-3" >PASO 3</button>
-            <button class="btn" id="btn-paso-4" >PASO 4</button>
-            <button class="btn" id="btn-paso-5" >PASO 5</button>
-        </div>     
-    </section>
-    
-    <script src="js/index.js"></script>
+        
+        <a href="steps.html" class="boton-inicial">Iniciar</a>
+    </div>
+       
 </body>
 </html>
