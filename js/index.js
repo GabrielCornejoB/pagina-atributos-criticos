@@ -114,7 +114,7 @@ function generarPaso2() {
     console.log("'generarPaso2()' called");
     let strPaso2 = "";
     for (o in empresa.listaObjetivos) {
-        strPaso2 = strPaso2.concat("<p style='font-weight:bold'>Objetivo:" + empresa.listaObjetivos[o].descripcion + "</p>"); 
+        strPaso2 = strPaso2.concat("<p style='font-weight:bold'>" + empresa.listaObjetivos[o].descripcion + "</p>"); 
         strPaso2 = strPaso2.concat("<div class='div-paso-2-2'>");    
         for (let i=1; i<6; i++) {
             let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " pro " + i + "'>" + 
@@ -178,10 +178,15 @@ function generarPaso3() {
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         if(obj.listaProblemas.length !== 0) {
-            strPaso3 = strPaso3.concat("<p style='font-weight:bold'>Objetivo: " + obj.descripcion + "</p><p></p><p></p>");
+            strPaso3 = strPaso3.concat("<p style='font-weight:bold'>" + obj.descripcion + "</p><p></p><p></p>");
             for(p in obj.listaProblemas) {
                 let prob = obj.listaProblemas[p];
-                strPaso3 = strPaso3.concat("<p>" + prob.descripcion + "</p>");
+                if(prob.descripcion.length >= 40) {
+                    strPaso3 = strPaso3.concat("<p>" + prob.descripcion.slice(0,40) + "...</p>");
+                }
+                else {
+                    strPaso3 = strPaso3.concat("<p>" + prob.descripcion + "</p>");
+                }   
                 let strClass = obj.id + " " + prob.id;
                 strPaso3 = strPaso3.concat("<div class='columna-paso-3'>" + 
                                             "<p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + " rad' checked>" +
@@ -257,20 +262,22 @@ function validarPaso4() {
     let listaDatosI = document.getElementsByClassName("dat");
     let listaExpsD = document.getElementsByClassName("expD");
     let faltaCampo = false;
+    let cantDatos = 0;
+    let it = 0;
     for (let i=0; i<listaExpsD.length; i++) {
         if(isEmpty(listaExpsD[i].value)) {
             faltaCampo = true;
         }
-    }
-    let minDatos = listaDatosI.length/6;
-    let cantDatos = 0;
-    for (let i=0; i<listaDatosI.length; i++) {
-        if(!isEmpty(listaDatosI[i].value)) {
-            cantDatos++;
+        for (let j=0; j<6; j++) {
+            if(!isEmpty(listaDatosI[it].value)) {
+                cantDatos++;
+            }
+            it++;
         }
-    }
-    if(cantDatos < minDatos) {
-        faltaCampo = true;
+        if(cantDatos === 0) {
+            faltaCampo = true;
+        }
+        cantDatos = 0;
     }
     if(faltaCampo === false) {
         agregarDatos();
@@ -310,6 +317,7 @@ function generarPaso5() {
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
             if (prob.esDeDatos === "Si") {
+                strPaso5 = strPaso5.concat("<hr style='height:1px; border-width:0; background-color:gray'>");
                 strPaso5 = strPaso5.concat("<p>" + prob.descripcion + "</p>")
                 for (d in prob.listaDatos) {
                     strPaso5 = strPaso5.concat("<div class='fila-paso-5'>" + 
@@ -321,7 +329,7 @@ function generarPaso5() {
                 }
             }           
         }
-        strPaso5 = strPaso5.concat("<hr>");
+        strPaso5 = strPaso5.concat("<hr style='height:3px; border-width:0; background-color:gray'>");
     }
     document.getElementById('div-paso-5').innerHTML = strPaso5;
     cambiarVista("paso-5");
