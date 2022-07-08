@@ -13,24 +13,26 @@ function crearObjetivo(id, descripcionObjetivo, listaProblemas) {
         listaProblemas
     };
 }
-function crearProblema(id, descripcionProblema, explicacion, listaDatos, esDeDatos, explicacionDatos, valorTotal,  explicacionEsDeDatos) {
+function crearProblema(id, descripcionProblema, explicacion, listaDatos, esDeDatos, explicacionDatos, valorTotalAnual,  explicacionEsDeDatos) {
     return {
         id,                             // Consecutivo: P001, P213, ...             
         descripcion: descripcionProblema,
         explicacion,
         esDeDatos,                      // Bool, define si el problema es o no de datos
         explicacionDatos,
-        valorTotal,
+        valorTotalAnual,
         listaDatos,
         explicacionEsDeDatos
     };
 }
-function crearDato(id, descripcionDato, descripcionFinal, valorParticular) {
+function crearDato(id, descripcionDato, descripcionFinal, valorParticularAnual, frecuenciaMensual, explicacionValor) {
     return {
         id,                             // Consecutivo: D001, D213, ...  
         descripcion: descripcionDato,   // Descripción inicial que ingresa el cliente del dato
         descripcionFinal,               // De tipo 'Diccionario', descripción final que sale de nuestro diccionario de datos
-        valorParticular
+        valorParticularAnual,
+        frecuenciaMensual,
+        explicacionValor
     };
 }
 // Aquí esto es una clase diccionario pero realmente debería ser de tipo DatoDiccionario, luego lo consulto
@@ -331,9 +333,9 @@ function generarPaso5() {
                     let strIdDato = prob.listaDatos[d].id;
                     strPaso5 = strPaso5.concat("<div class='fila-paso-5'>" + 
                                                 "<p style='font-size:small'>" + prob.listaDatos[d].descripcion + "</p>" + 
-                                                "<input type='number' placeholder='Frec/mes' class='" + strIdDato + " frec inp-paso-5'>" + 
-                                                "<input type='number' placeholder='Impacto mensual' class='" + strIdDato + " impM inp-paso-5'>" + 
-                                                "<input type='number' placeholder='Impacto anual' class='" + strIdDato + " impA inp-paso-5'>" + 
+                                                "<input type='number' placeholder='Frec mensual' class='" + strIdDato + " frec inp-paso-5'>" + 
+                                                "<input type='number' placeholder='Impacto mensual ($)' class='" + strIdDato + " impM inp-paso-5'>" + 
+                                                // "<input type='number' placeholder='Impacto anual' class='" + strIdDato + " impA inp-paso-5'>" + 
                                                 "<input type='text' placeholder='Explicación' class='" + strIdDato + " exp5 inp-paso-5'> </div>");
                 }
             }          
@@ -367,6 +369,24 @@ function validarPaso5() {
 function agregarImpactoFinanciero() {
     console.log("'agregarImpactoFinanciero()' called");
     logFinal();
+    for (o in empresa.listaObjetivos) {
+        let obj = empresa.listaObjetivos[o];
+        for (p in obj.listaProblemas) {
+            let prob = obj.listaProblemas[p];
+            let tmpValorTotal = 0;
+            if (prob.esDeDatos === 'Si') {
+                for (d in prob.listaDatos) {
+                    let dato = prob.listaDatos[d];
+                    let campos = document.getElementsByClassName(dato.id);
+                    dato.frecuenciaMensual = campos[0].value;
+                    dato.valorParticularAnual = (campos[1].value * 12);
+                    dato.explicacionValor = campos[2].value;
+                    tmpValorTotal += (campos[1].value * 12);
+                }
+            }
+            prob.valorTotalAnual = tmpValorTotal;
+        }
+    }
 }
 
 function logFinal() {
