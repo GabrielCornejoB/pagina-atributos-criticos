@@ -66,7 +66,7 @@ function idClases(letra, numero) {
     else if(letra.toUpperCase() === 'P') {
         contadorProblemas++;
     }
-    else if (letra.tpUpperCase() === 'D') {
+    else if (letra.toUpperCase() === 'D') {
         contadorDatos++;
     }
     return letra.toUpperCase() + final;
@@ -242,16 +242,21 @@ function generarPaso4() {
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         strPaso4 = strPaso4.concat("<p style='font-weight:bold'>" + obj.descripcion + "</p>");
+        let hayProbDatos = false;
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
             if (prob.esDeDatos === 'Si') {
+                hayProbDatos = true;
                 let strClass = obj.id + " " + prob.id;
                 strPaso4 = strPaso4.concat("<p>" + prob.descripcion + "</p>")
                 strDataList = "<input list='l-datos' placeholder='Datos involucrados' class='" + strClass + " dat'>";
                 strPaso4 = strPaso4.concat("<div class='fila-paso-4'>" + "<div class='datos-paso-4'>" + strDataList.repeat(6) + "</div>" +
                                             "<textarea placeholder='Explicación' class='" + strClass + " expD' style='resize:none'></textarea></div>");
             }       
-        }       
+        }    
+        if(hayProbDatos === false) {
+            strPaso4 = strPaso4.concat("<p>Este objetivo no tiene problemas por calidad de datos</p>");
+        }   
     }
     document.getElementById('div-paso-4').innerHTML = strPaso4;
     cambiarVista("paso-4");
@@ -298,7 +303,8 @@ function agregarDatos() {
                 let exp = document.getElementsByClassName(obj.id + " " + prob.id + " expD");
                 for (let i=0; i<datos.length; i++) {
                     if(!isEmpty(datos[i].value)) {
-                        prob.listaDatos.push(datos[i].value);
+                        let tmpDato = crearDato(idClases('D', contadorDatos), datos[i].value);
+                        prob.listaDatos.push(tmpDato);
                     }
                 }
                 prob.explicacionDatos = exp[0].value;
@@ -314,25 +320,53 @@ function generarPaso5() {
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         strPaso5 = strPaso5.concat("<p style='font-weight:bold'>" + obj.descripcion + "</p>");
+        let hayProbDatos = false;
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
             if (prob.esDeDatos === "Si") {
+                hayProbDatos = true;
                 strPaso5 = strPaso5.concat("<hr style='height:1px; border-width:0; background-color:gray'>");
                 strPaso5 = strPaso5.concat("<p>" + prob.descripcion + "</p>")
                 for (d in prob.listaDatos) {
+                    let strIdDato = prob.listaDatos[d].id;
                     strPaso5 = strPaso5.concat("<div class='fila-paso-5'>" + 
-                                                "<p style='font-size:small'>" + prob.listaDatos[d] + "</p>" + 
-                                                "<input type='text' placeholder='Frec/mes'>" + 
-                                                "<input type='text' placeholder='Impacto mensual'>" + 
-                                                "<input type='text' placeholder='Impacto anual'>" + 
-                                                "<input type='text' placeholder='Explicación'> </div>");
+                                                "<p style='font-size:small'>" + prob.listaDatos[d].descripcion + "</p>" + 
+                                                "<input type='number' placeholder='Frec/mes' class='" + strIdDato + " frec inp-paso-5'>" + 
+                                                "<input type='number' placeholder='Impacto mensual' class='" + strIdDato + " impM inp-paso-5'>" + 
+                                                "<input type='number' placeholder='Impacto anual' class='" + strIdDato + " impA inp-paso-5'>" + 
+                                                "<input type='text' placeholder='Explicación' class='" + strIdDato + " exp5 inp-paso-5'> </div>");
                 }
-            }           
+            }          
         }
+        if(hayProbDatos === false) {
+            strPaso5 = strPaso5.concat("<p>Este objetivo no tiene problemas por calidad de datos</p>");
+        }    
         strPaso5 = strPaso5.concat("<hr style='height:3px; border-width:0; background-color:gray'>");
     }
     document.getElementById('div-paso-5').innerHTML = strPaso5;
     cambiarVista("paso-5");
+}
+
+function validarPaso5() {
+    console.log("'validarPaso5()' called");
+    let listaInputs5 = document.getElementsByClassName("inp-paso-5");
+    let faltaCampo = false;
+    for (let i=0; i<listaInputs5.length; i++) {
+        if(isEmpty(listaInputs5[i].value)) {
+            faltaCampo = true;
+        }
+    }
+    if(faltaCampo === false) {
+        agregarImpactoFinanciero();
+    }
+    else {
+        alert("Aún faltan campos por llenar");
+    }
+}
+
+function agregarImpactoFinanciero() {
+    console.log("'agregarImpactoFinanciero()' called");
+    logFinal();
 }
 
 function logFinal() {
@@ -348,15 +382,11 @@ function logFinal() {
             if(empresa.listaObjetivos[i].listaProblemas[j].esDeDatos === "Si") {
                 console.log("\t\tLista de datos:");
                 for(let k=0; k<empresa.listaObjetivos[i].listaProblemas[j].listaDatos.length; k++) {
-                    console.log("\t\t- " + empresa.listaObjetivos[i].listaProblemas[j].listaDatos[k]);
+                    console.log("\t\t- " + empresa.listaObjetivos[i].listaProblemas[j].listaDatos[k].descripcion);
                 }
             }
         }
     }
-}
-
-function agregarImpactoFinanciero() {
-    
 }
 
 // Cambiar de vista en el HTML
