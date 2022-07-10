@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background: rgb(52, 52, 63);
+    align-items: center;
+    justify-content: center;
+}
+
+.page {
+    margin: 50px auto;
+    display: flex;
+    width: 80%;
+    min-height: 900px;
+    background: white;
+}
+
+.page .contenido {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 15px;
+}
+
+.contenido .titulo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.objetivo-informe {
+    background: rgba(92, 255, 92, 0.5);
+    padding: 5px;
+    margin: 0px;
+}
+
+.problema-informe {
+    background: rgba(74, 186, 252, 0.5);
+    padding: 5px;
+    margin: 0px;
+}
+
+.problemas {
+    padding-left: 50px;
+    /* border: 3px solid rgb(80, 80, 80); */
+}
+
+.es-por-datos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dato-informe {
+    background: rgba(255, 127, 127, 0.5);
+    padding: 5px;
+    margin: 0px;
+}
+
+.datos {
+    padding-left: 50px;
+    /* border: 3px solid rgb(80, 80, 80); */
+}
+
+.div-financiero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.div-financiero p {
+    margin-top: 5px;
+}

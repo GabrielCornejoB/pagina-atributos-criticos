@@ -285,12 +285,14 @@ input {
     background-color: transparent;
 }
 
-/* ::-webkit-scrollbar {
-    width: 20px;
+/* .page {
+    position: relative;
+    width: 1500px;
 }
-::-webkit-scrollbar-track {
-    background: lightgray;
-}
-::-webkit-scrollbar-thumb {
-    background: darkgreen;
+.page .contenido-informe {
+    box-sizing: content-box;
+    background: whitesmoke;
+    height: 900px;
+    overflow-x: hidden;
+    overflow-y: auto;
 } */
