@@ -51,9 +51,6 @@ function crearTermino(id, descripcionTermino) {
     };
 }
 
-// let nombreEmpresa = prompt("Ingrese el nombre de la empresa");
-let empresa = crearEmpresa("E0001", "Empresa prueba", []);
-console.log(empresa);
 let contadorObjetivos = 1;
 let contadorProblemas = 1;
 let contadorDatos = 1;
@@ -76,6 +73,24 @@ function idClases(letra, numero) {
 
 function isEmpty(str) {
     return !str.trim().length;
+}
+
+function validarEmpresa() {
+    console.log("'validarEmpresa()' called");
+    let inputEmpresa = document.getElementById("input-nombre-empresa");
+    let empresaValida = true;
+    if(isEmpty(inputEmpresa.value)) {
+        empresaValida = false;
+    }
+    if(empresaValida === true) {
+        let empresa = crearEmpresa("E0001", inputEmpresa.value, []);
+        console.log(empresa);
+        document.getElementById('sec-inicio').hidden = true;
+        document.getElementById('sec-pasos').hidden = false;
+    }
+    else {
+        alert("Debe colocar el nombre de la empresa para poder inciar");
+    }
 }
 
 function generarTextArea() {
