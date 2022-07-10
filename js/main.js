@@ -75,6 +75,8 @@ function isEmpty(str) {
     return !str.trim().length;
 }
 
+let empresa = crearEmpresa("E0001", "tmp", []);
+
 function validarEmpresa() {
     console.log("'validarEmpresa()' called");
     let inputEmpresa = document.getElementById("input-nombre-empresa");
@@ -83,7 +85,7 @@ function validarEmpresa() {
         empresaValida = false;
     }
     if(empresaValida === true) {
-        let empresa = crearEmpresa("E0001", inputEmpresa.value, []);
+        empresa.nombre = inputEmpresa.value;
         console.log(empresa);
         document.getElementById('sec-inicio').hidden = true;
         document.getElementById('sec-pasos').hidden = false;
@@ -402,7 +404,10 @@ function agregarImpactoFinanciero() {
             prob.valorTotalAnual = tmpValorTotal;
         }
     }
-    cambiarVista("informe-final");
+    localStorage.setItem("nombre-empresa", JSON.stringify(empresa));
+    window.location.href = "informe.html";
+    // Enviar objeto Empresa a localstorage
+    
 }
 
 function logFinal() {
@@ -425,9 +430,6 @@ function logFinal() {
     }
 }
 
-function generarInformeFinal() {
-    
-}
 // Cambiar de vista en el HTML
 let currentDiv = document.getElementById("paso-1")
 document.getElementById("btn-paso-1").disabled = true;
