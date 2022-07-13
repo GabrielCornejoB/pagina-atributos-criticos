@@ -18,40 +18,34 @@ for (o in empresa.listaObjetivos) {
     let it_p = 1;
     for (p in obj.listaProblemas) {
         let prob = obj.listaProblemas[p];
-        strInforme = strInforme.concat("<div class='problema " + prob.id + "'>" + 
+        strInforme = strInforme.concat("<hr><div class='problema " + prob.id + "'>" + 
                                             "<h3 class='titulo-problema'>Aspecto problemático " + it_p + ": " + prob.descripcion + "</h3>" +
+                                            "<p class='subtitulo'>Justificación aspecto problemático</p>" + 
                                             "<p>" + prob.explicacion + "</p>" + 
-                                            "<div class='es-por-datos'>" + 
-                                                "<p>Es ocasionado por calidad de datos?: </p>" +
-                                                "<p>" + prob.esDeDatos + "</p>" + 
-                                            "</div>" + 
-                                            "<p style='padding-left:20px; margin-top:0px'>" + prob.explicacionEsDeDatos + "</p>");
+                                            "<p class='subtitulo'>El aspecto problemático es ocasionado por calidad de datos?: </p>" +
+                                            "<p>(" + prob.esDeDatos.toUpperCase() + "). " + prob.explicacionEsDeDatos +"</p>");
                                             
         if(prob.esDeDatos === 'Si') {
-            strInforme = strInforme.concat("<p>Justificación datos problemáticos: " + prob.explicacionDatos + "</p>" + 
+            strInforme = strInforme.concat("<p class='subtitulo'>Justificación datos involucrados en el aspecto problemático generado por calidad de datos</p>" + 
+                                            "<p >" + prob.explicacionDatos + "</p>" + 
                                             "<div class='datos'>");
             let it_d = 1;
             for (d in prob.listaDatos) {
                 let dato = prob.listaDatos[d];              
                 strInforme = strInforme.concat("<div class='dato " + dato.id + "'>" + 
                                                     "<h4 class='titulo-dato'>Dato " + it_d + ": " + dato.descripcion + "</h4>" +
-                                                    "<div class='div-financiero'>" + 
-                                                        "<p>Frecuencia de ocurrencia (mensual/anual):</p>" + 
-                                                        "<p>" + dato.frecuenciaMensual + " / "+ (dato.frecuenciaMensual * 12) + "</p>" +
-                                                    "</div>" +
-                                                    "<div class='div-financiero'>" + 
-                                                        "<p>Impacto financiero (mensual/anual):</p>" + 
-                                                        "<p>$" + formatoDinero.format(dato.valorParticularAnual/12) + " / $" + formatoDinero.format(dato.valorParticularAnual) + "</p>" +
-                                                    "</div>" + 
-                                                    "<div class='div-financiero'><p>Justificación impacto financiero: " + dato.explicacionValor + "</p></div>" +
+                                                    "<p class='subtitulo'>Frecuencia en que el dato genera el aspecto problemático (mensual/anual)</p>" + 
+                                                    "<p style='text-align:end'>" + dato.frecuenciaMensual + " / "+ (dato.frecuenciaMensual * 12) + "</p>" +
+                                                    "<p class='subtitulo'>Impacto financiero que causa el dato al generar el aspecto problemático (mensual/anual)</p>" +
+                                                    "<p style='text-align:end'>$" + formatoDinero.format(dato.valorParticularAnual/12) + " / $" + formatoDinero.format(dato.valorParticularAnual) + "</p>" +
+                                                    "<p class='subtitulo'>Justificación frecuencia e impacto financiero del dato</p>" +
+                                                    "<p>" + dato.explicacionValor + "</p>" +
                                                 "</div><hr>");
                 it_d++;
             }
             strInforme = strInforme.concat( "</div>");
-            strInforme = strInforme.concat("<div class='div-financiero'>" + 
-                                                "<p>Impacto financiero total (mensual/anual):</p>" + 
-                                                "<p>$" + formatoDinero.format(prob.valorTotalAnual/12) + " / $" + formatoDinero.format(prob.valorTotalAnual) + "</p>" +
-                                            "</div>");         
+            strInforme = strInforme.concat("<p class='subtitulo'>Impacto financiero total del aspecto problemático (mensual/anual):</p>" + 
+                                            "<p style='text-align:end'>$" + formatoDinero.format(prob.valorTotalAnual/12) + " / $" + formatoDinero.format(prob.valorTotalAnual) + "</p>");         
         } 
         it_p++;
         strInforme = strInforme.concat("</div>");
