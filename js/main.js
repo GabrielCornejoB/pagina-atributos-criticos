@@ -356,9 +356,9 @@ function generarPaso5() {
                     strPaso5 = strPaso5.concat("<div class='fila-paso-5'>" + 
                                                 "<p style='font-size:small'>" + prob.listaDatos[d].descripcion + "</p>" + 
                                                 "<input type='number' placeholder='Frec mensual' class='" + strIdDato + " frec inp-paso-5'>" + 
-                                                "<input type='number' placeholder='Impacto mensual ($)' class='" + strIdDato + " impM inp-paso-5'>" + 
-                                                // "<input type='number' placeholder='Impacto anual' class='" + strIdDato + " impA inp-paso-5'>" + 
-                                                "<input type='text' placeholder='Explicación' class='" + strIdDato + " exp5 inp-paso-5'> </div>");
+                                                "<input type='number' placeholder='Impacto mensual ($)' class='" + strIdDato + " impM inp-paso-5'>" +      
+                                                "<textarea rows='3' placeholder='Explicación' class='" + strIdDato + " exp5 inp-paso-5' style='resize:none'></textarea> </div>");
+                                                
                 }
             }          
         }
