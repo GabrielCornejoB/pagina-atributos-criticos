@@ -97,7 +97,7 @@ function validarEmpresa() {
 
 function generarTextArea() {
     console.log("'generarTextArea()' called");
-    let strTextArea = "<textarea cols='100' rows='3' class='input-paso-1 p-1' style='resize:none'></textarea>";
+    let strTextArea = "<textarea placeholder='Objetivo' cols='100' rows='3' class='input-paso-1 p-1' style='resize:none'></textarea>";
     document.getElementById("div-paso-1").insertAdjacentHTML('beforeend', strTextArea); 
 }
 
@@ -211,7 +211,7 @@ function generarPaso3() {
                                             "<p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + " rad' checked>" +
                                             "&nbsp&nbsp<p>NO&nbsp</p><input type='radio' name=r'" + prob.id+ "' value='No' class='" + strClass + " rad'> </div>");
 
-                strPaso3 = strPaso3.concat("<textarea rows='3' style='resize:none' placeholder='Explicación' class='" + strClass + " exp2'></textarea>");
+                strPaso3 = strPaso3.concat("<textarea rows='3' style='resize:none' placeholder='Explicación de porque el problema es ocasionado o no por calidad de datos' class='" + strClass + " exp2'></textarea>");
             }
         }
     }
@@ -274,7 +274,7 @@ function generarPaso4() {
                 strPaso4 = strPaso4.concat("<div class='fila-paso-4'>" + 
                                                 "<div class='input-paso-4'>" + strDataList + "<button onclick=\"escribirDato('" + strClass + "')\">Agregar</button>" + "</div>" +
                                                 "<textarea class='" + strClass + " dats4' style='resize:none' disabled></textarea>" +
-                                                "<textarea placeholder='Explicación' class='" + strClass + " expD' style='resize:none'></textarea>" + 
+                                                "<textarea placeholder='Explicación de porque los datos son problemáticos' class='" + strClass + " expD' style='resize:none'></textarea>" + 
                                             "</div>");
             }       
         }    
