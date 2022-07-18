@@ -299,25 +299,14 @@ function escribirDato(classInput) {
 
 function validarPaso4() {
     console.log("'validarPaso4()' called");
-    let listaDatosI = document.getElementsByClassName("dat");
+    let listaDatosI = document.getElementsByClassName("dats4");
     let listaExpsD = document.getElementsByClassName("expD");
     let faltaCampo = false;
-    let cantDatos = 0;
-    let it = 0;
-    for (let i=0; i<listaExpsD.length; i++) {
-        if(isEmpty(listaExpsD[i].value)) {
+
+    for (let i=0; i<listaDatosI.length; i++) {
+        if(isEmpty(listaDatosI[i].value) || isEmpty(listaExpsD[i].value)) {
             faltaCampo = true;
         }
-        for (let j=0; j<6; j++) {
-            if(!isEmpty(listaDatosI[it].value)) {
-                cantDatos++;
-            }
-            it++;
-        }
-        if(cantDatos === 0) {
-            faltaCampo = true;
-        }
-        cantDatos = 0;
     }
     if(faltaCampo === false) {
         agregarDatos();
@@ -334,13 +323,13 @@ function agregarDatos() {
         for (p in obj.listaProblemas) {
             let prob = obj.listaProblemas[p];
             if (prob.esDeDatos === 'Si') {
-                let datos = document.getElementsByClassName(obj.id + " " + prob.id + " dat");
+                let datos = document.getElementsByClassName(obj.id + " " + prob.id + " dats4");
                 let exp = document.getElementsByClassName(obj.id + " " + prob.id + " expD");
-                for (let i=0; i<datos.length; i++) {
-                    if(!isEmpty(datos[i].value)) {
-                        let tmpDato = crearDato(idClases('D', contadorDatos), datos[i].value);
-                        prob.listaDatos.push(tmpDato);
-                    }
+                let datosSplit = datos[0].value.split(" , ");
+                
+                for (let i=0; i<datosSplit.length; i++) {
+                    let tmpDato = crearDato(idClases('D', contadorDatos), datosSplit[i]);
+                    prob.listaDatos.push(tmpDato);
                 }
                 prob.explicacionDatos = exp[0].value;
             }
