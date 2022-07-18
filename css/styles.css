@@ -221,12 +221,16 @@ textarea {
 }
 .fila-paso-4 {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 20% auto 45%;
     gap: 10px;
 }
-.datos-paso-4 {
-    display: grid;
-    grid-template-columns: auto auto;
+.fila-paso-4 button {
+    /* align-self: center; */
+    padding: 3px;
+}
+.input-paso-4 {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 .div-paso-4 textarea {

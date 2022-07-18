@@ -259,6 +259,7 @@ function agregarEsDatos() {
 function generarPaso4() {
     console.log("'generarPaso4()' called");
     let strPaso4 = "";
+    let div = document.getElementById('div-paso-4');
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         strPaso4 = strPaso4.concat("<p style='font-weight:bold'>" + obj.descripcion + "</p>");
@@ -268,10 +269,13 @@ function generarPaso4() {
             if (prob.esDeDatos === 'Si') {
                 hayProbDatos = true;
                 let strClass = obj.id + " " + prob.id;
-                strPaso4 = strPaso4.concat("<p>" + prob.descripcion + "</p>")
-                strDataList = "<input list='l-datos' placeholder='Datos involucrados' class='" + strClass + " dat'>";
-                strPaso4 = strPaso4.concat("<div class='fila-paso-4'>" + "<div class='datos-paso-4'>" + strDataList.repeat(6) + "</div>" +
-                                            "<textarea placeholder='Explicación' class='" + strClass + " expD' style='resize:none'></textarea></div>");
+                strPaso4 = strPaso4.concat("<p>" + prob.descripcion + "</p>");
+                strDataList = "<input list='l-datos' placeholder='Nombre del dato' class='" + strClass + " dat'>";
+                strPaso4 = strPaso4.concat("<div class='fila-paso-4'>" + 
+                                                "<div class='input-paso-4'>" + strDataList + "<button onclick=\"escribirDato('" + strClass + "')\">Agregar</button>" + "</div>" +
+                                                "<textarea class='" + strClass + " dats4' style='resize:none' disabled></textarea>" +
+                                                "<textarea placeholder='Explicación' class='" + strClass + " expD' style='resize:none'></textarea>" + 
+                                            "</div>");
             }       
         }    
         if(hayProbDatos === false) {
@@ -280,6 +284,17 @@ function generarPaso4() {
     }
     document.getElementById('div-paso-4').innerHTML = strPaso4;
     cambiarVista("paso-4");
+}
+
+function escribirDato(classInput) {
+    console.log('escribirdato');
+    if(document.getElementsByClassName(classInput + " dat")[0].value !== "") {
+        if (document.getElementsByClassName(classInput + " dats4")[0].value !== "") {
+            document.getElementsByClassName(classInput + " dats4")[0].insertAdjacentHTML('beforeend',' , ');
+        } 
+        document.getElementsByClassName(classInput + " dats4")[0].insertAdjacentHTML('beforeend', document.getElementsByClassName(classInput + " dat")[0].value); 
+        document.getElementsByClassName(classInput + " dat")[0].value = "";
+    }
 }
 
 function validarPaso4() {
