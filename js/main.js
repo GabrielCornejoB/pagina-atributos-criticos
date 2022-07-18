@@ -136,8 +136,8 @@ function generarPaso2() {
         strPaso2 = strPaso2.concat("<p style='font-weight:bold'>" + empresa.listaObjetivos[o].descripcion + "</p>"); 
         strPaso2 = strPaso2.concat("<div class='div-paso-2-2'>");    
         for (let i=1; i<6; i++) {
-            let strInputs = "<input type='text' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " pro " + i + "'>" + 
-                            "<input type='text' placeholder='Explicación' class='" + empresa.listaObjetivos[o].id + " exp " + i + "'>";
+            let strInputs = "<textarea rows='3' style='resize:none' placeholder='Aspecto problemático' class='" + empresa.listaObjetivos[o].id + " pro " + i + "'></textarea>" + 
+                            "<textarea rows='3' style='resize:none' placeholder='Explicación del aspecto problemático' class='" + empresa.listaObjetivos[o].id + " exp " + i + "'></textarea>";
             strPaso2 = strPaso2.concat(strInputs);
         }  
         strPaso2 = strPaso2.concat("</div>");  
