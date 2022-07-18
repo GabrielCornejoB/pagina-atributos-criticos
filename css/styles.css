@@ -179,7 +179,7 @@ textarea {
 .div-paso-3 {
     width: 80%;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 40% 15% auto;
     gap: 20px 20px;
     margin: 20px;
     text-align: left;

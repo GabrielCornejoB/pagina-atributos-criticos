@@ -200,8 +200,8 @@ function generarPaso3() {
             strPaso3 = strPaso3.concat("<p style='font-weight:bold'>" + obj.descripcion + "</p><p></p><p></p>");
             for(p in obj.listaProblemas) {
                 let prob = obj.listaProblemas[p];
-                if(prob.descripcion.length >= 40) {
-                    strPaso3 = strPaso3.concat("<p>" + prob.descripcion.slice(0,40) + "...</p>");
+                if(prob.descripcion.length >= 80) {
+                    strPaso3 = strPaso3.concat("<p>" + prob.descripcion.slice(0,80) + "...</p>");
                 }
                 else {
                     strPaso3 = strPaso3.concat("<p>" + prob.descripcion + "</p>");
@@ -210,7 +210,8 @@ function generarPaso3() {
                 strPaso3 = strPaso3.concat("<div class='columna-paso-3'>" + 
                                             "<p>SI&nbsp</p><input type='radio' name=r'" + prob.id + "' value='Si' class='" + strClass + " rad' checked>" +
                                             "&nbsp&nbsp<p>NO&nbsp</p><input type='radio' name=r'" + prob.id+ "' value='No' class='" + strClass + " rad'> </div>");
-                strPaso3 = strPaso3.concat("<input type='text' placeholder='Explicación' class='" + strClass + " exp2'>");
+
+                strPaso3 = strPaso3.concat("<textarea rows='3' style='resize:none' placeholder='Explicación' class='" + strClass + " exp2'></textarea>");
             }
         }
     }
