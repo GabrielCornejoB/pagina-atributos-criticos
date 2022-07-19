@@ -1,5 +1,4 @@
 let empresa = JSON.parse(localStorage.getItem("nombre-empresa"));
-console.log(empresa);
 
 document.getElementById("titulo-informe").innerHTML = "Informe final " + empresa.nombre;
 let d = new Date();
@@ -55,3 +54,4 @@ for (o in empresa.listaObjetivos) {
     
 }
 document.getElementsByClassName("objetivos")[0].innerHTML = strInforme;
+document.getElementById("input-post").value = JSON.stringify(empresa);
