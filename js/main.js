@@ -143,7 +143,7 @@ function generarPaso2() {
         strPaso2 = strPaso2.concat("</div>");  
     }  
     document.getElementById('div-paso-2').innerHTML = strPaso2;
-    cambiarVista("paso-2");
+    cambiarVista("paso-2", false);
 }
 
 function validarPaso2() {
@@ -216,7 +216,7 @@ function generarPaso3() {
         }
     }
     document.getElementById('div-paso-3').innerHTML = strPaso3;
-    cambiarVista("paso-3");
+    cambiarVista("paso-3", false);
 }
 
 function validarPaso3() {
@@ -283,7 +283,7 @@ function generarPaso4() {
         }   
     }
     document.getElementById('div-paso-4').innerHTML = strPaso4;
-    cambiarVista("paso-4");
+    cambiarVista("paso-4", false);
 }
 
 function escribirDato(classInput) {
@@ -326,7 +326,7 @@ function agregarDatos() {
                 let datos = document.getElementsByClassName(obj.id + " " + prob.id + " dats4");
                 let exp = document.getElementsByClassName(obj.id + " " + prob.id + " expD");
                 let datosSplit = datos[0].value.split(" , ");
-                
+                prob.listaDatos = [];
                 for (let i=0; i<datosSplit.length; i++) {
                     let tmpDato = crearDato(idClases('D', contadorDatos), datosSplit[i]);
                     prob.listaDatos.push(tmpDato);
@@ -368,7 +368,7 @@ function generarPaso5() {
         strPaso5 = strPaso5.concat("<hr style='height:3px; border-width:0; background-color:gray'>");
     }
     document.getElementById('div-paso-5').innerHTML = strPaso5;
-    cambiarVista("paso-5");
+    cambiarVista("paso-5", false);
 }
 
 function validarPaso5() {
@@ -390,7 +390,6 @@ function validarPaso5() {
 
 function agregarImpactoFinanciero() {
     console.log("'agregarImpactoFinanciero()' called");
-    logFinal();
     for (o in empresa.listaObjetivos) {
         let obj = empresa.listaObjetivos[o];
         for (p in obj.listaProblemas) {
@@ -411,41 +410,24 @@ function agregarImpactoFinanciero() {
     }
     localStorage.setItem("nombre-empresa", JSON.stringify(empresa));
     window.location.href = "informe.html";
-    // Enviar objeto Empresa a localstorage
-    
-}
-
-function logFinal() {
-    console.log("'logFinal()' called");
-    cambiarVista("paso-5");
-    console.log("Nombre empresa: " + empresa.nombre);
-    console.log("Lista de objetivos estratégicos:");
-    for(let i=0; i<empresa.listaObjetivos.length; i++) {
-        console.log(" - " + empresa.listaObjetivos[i].descripcion);
-        console.log("\tLista de aspectos problemáticos:");
-        for(let j=0; j<empresa.listaObjetivos[i].listaProblemas.length; j++) {
-            console.log("\t- " + empresa.listaObjetivos[i].listaProblemas[j].descripcion + " (Es de Datos: " + empresa.listaObjetivos[i].listaProblemas[j].esDeDatos + ")");
-            if(empresa.listaObjetivos[i].listaProblemas[j].esDeDatos === "Si") {
-                console.log("\t\tLista de datos:");
-                for(let k=0; k<empresa.listaObjetivos[i].listaProblemas[j].listaDatos.length; k++) {
-                    console.log("\t\t- " + empresa.listaObjetivos[i].listaProblemas[j].listaDatos[k].descripcion);
-                }
-            }
-        }
-    }
 }
 
 // Cambiar de vista en el HTML
 let currentDiv = document.getElementById("paso-1")
 document.getElementById("btn-paso-1").disabled = true;
-function cambiarVista(idDiv) {
+function cambiarVista(idDiv, isBtn) {
     let div = document.getElementById(idDiv);
-    if(div.hidden !== false) {
+    let curDigit = currentDiv.id.charAt(currentDiv.id.length - 1);
+    let digit = idDiv.charAt(idDiv.length-1);
+    if((div.hidden !== false && isBtn === false) || (div.hidden !== false && isBtn === true && curDigit > digit)) {
         let idOld = currentDiv.id;
         currentDiv.hidden = true;
         div.hidden = false;
         currentDiv = div;
         document.getElementById("btn-" + idDiv).disabled = true;
         document.getElementById("btn-" + idOld).disabled = false;
+    }
+    else {
+        alert("No se puede avanzar en los pasos desde estos botones, solo retroceder, si desea avanzar debe de presionar el botón Confirmar");
     }
 }

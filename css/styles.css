@@ -80,6 +80,7 @@ input {
 .btn_confirmar:hover {
     background-color: var(--principal);
     color: white;
+    cursor: pointer;
 }
 .btn_confirmar:disabled {
     border: 3px solid rgba(128, 128, 128, 0.226);
@@ -92,6 +93,7 @@ input {
 .btn-agregar {
     padding: 2px 4px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .card {
@@ -295,14 +297,8 @@ textarea {
     background-color: transparent;
 }
 
-/* .page {
-    position: relative;
-    width: 1500px;
+.botones button:hover {
+    background-color: var(--principal);
+    cursor: pointer;
 }
-.page .contenido-informe {
-    box-sizing: content-box;
-    background: whitesmoke;
-    height: 900px;
-    overflow-x: hidden;
-    overflow-y: auto;
-} */
+

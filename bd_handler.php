@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Datos guardados</title>
 </head>
 <body>
-    <h1>PHP wu</h1>
+    <h1>Datos ingresados exitosamente</h1>
     <?php
         $empresaJSON = $_POST['data'];
         $empresa = json_decode($empresaJSON, true);
@@ -85,6 +85,7 @@
             }
         }
     ?>
+    <!-- <button>Volver a inicio</button> -->
 </body>
 </html>
 
