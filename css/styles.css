@@ -302,3 +302,36 @@ textarea {
     cursor: pointer;
 }
 
+.card .contenido-final {
+    padding: 20px;
+    width: 1040px;
+    height: 300px;
+    background: whitesmoke;
+    border-radius: 20px;
+    padding-top: 80px;
+}
+
+.div-final {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+.div-final h1{
+    font-size: 50px;
+}
+
+.div-final a {
+    margin-top: 45px;
+    padding: 5px 10px;
+    font-size: larger;
+    background: transparent;
+    border: 3px solid var(--principal);
+    text-decoration: none;
+    color: black;
+}
+
+.div-final a:hover {
+    background: var(--principal);
+    color: white;
+}

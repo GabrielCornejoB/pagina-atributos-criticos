@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datos guardados</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <?php
@@ -74,9 +75,13 @@
             }
         }
     ?>
-
-    <h1>Datos ingresados exitosamente</h1>
-    
-    <!-- <button>Volver a inicio</button> -->
+    <div class="card"> 
+        <div class="contenido-final">
+            <div class="div-final">
+                <h1>Datos guardados exitosamente</h1>
+                <a href="taller.html">Regresar a Inicio</a>
+            </div>     
+        </div>      
+    </div>
 </body>
 </html>
