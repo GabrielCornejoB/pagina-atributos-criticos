@@ -7,23 +7,12 @@
     <title>Datos guardados</title>
 </head>
 <body>
-    <h1>Datos ingresados exitosamente</h1>
     <?php
         $empresaJSON = $_POST['data'];
         $empresa = json_decode($empresaJSON, true);
 
-        //(Explicación == Justificación)
-        //empresa:  id, nombre, listaObjetivos
-        //objetivo: id, descripcion, listaProblemas
-        //problema: id, descripcion, explicacion, esDeDatos, valorTotalAnual, explicacionEsDeDatos, explicacionDatos, listaDatos
-        //dato:     id, descripcion, descripcionFinal (tipo diccionario), valorParticularAnual, frecuenciaMensual, explicacionValor
-
         // Conexión con bd
-        $dbServerName = "localhost";
-        $dbUserName = "root";
-        $dbPassword = "";
-        $dbName = "atributos_criticos";
-        $conn = mysqli_connect($dbServerName, $dbUserName, $dbPassword, $dbName);
+        require_once 'php/connection.php';
 
         // Insertar en BD nombre de la empresa
         $nombreEmpresa = $empresa['nombre'];
@@ -85,38 +74,9 @@
             }
         }
     ?>
+
+    <h1>Datos ingresados exitosamente</h1>
+    
     <!-- <button>Volver a inicio</button> -->
 </body>
 </html>
-
-
-
-<!--    INSERTS
-
-INSERT INTO empresas (nombre) 
-    VALUES (''); 
-
-INSERT INTO objetivos (id_empresa, descripcion_objetivo)
-    VALUES ('!', '')
-
-INSERT INTO problemas (id_objetivo, descripcion, justificacion, es_de_datos, justificacion_es_de_datos, justificacion_datos, valor_total_anual) 
-    VALUES ('!', '', '', '', '', '', ''); 
-
-INSERT INTO datos (id_problema, descripcion, frecuencia_mensual, valor_particular_anual, justificacion_financiera)
-    VALUES ('!', '', '', '', '');
--->
-
-
-<!--    SELECT id del ultimo 
-
-SELECT * FROM x ORDER BY id_x DESC LIMIT 1; 
-
-$sql = "SELECT * FROM objetivos ORDER BY id_objetivo DESC LIMIT 1;";
-        $ans = mysqli_query($conn, $sql);
-        $valid = mysqli_num_rows($ans);
-        if($valid > 0) {
-            while($row = mysqli_fetch_assoc($ans)) {
-                echo $row['descripcion'];
-            }
-        }
--->
