@@ -23,13 +23,15 @@
     </header>
     <div class="pasos paso-1">
         <p>Ingrese por favor los objetivos estratégicos del negocio que impactas o el objetivo estratégico de la unidad del negocio. Puede agregar más campos de texto presionandoel boton "[+]", una vez haya llenado los campos puede presionar el botón "Confirmar".</p>
-        <button class="btn-add">+</button>
+        <button class="btn-add" onclick='generarTextArea()'>+</button>
         <form action="" method="post">
-            <div class="inputs">
-                <textarea placeholder='Objetivo' cols="150" rows="3" style='resize:none' required></textarea>
+            <div id="inputs">
+                <textarea placeholder='Objetivo' cols='150' rows='3' style='resize:none' required></textarea>
+                <!-- Aquí se agregan los demás textareas -->
             </div>
             <button type="submit">Continuar</button>
         </form>
     </div>
+    <script src="js/functions.js"></script>
 </body>
 </html>
