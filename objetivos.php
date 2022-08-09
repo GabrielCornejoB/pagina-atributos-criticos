@@ -21,38 +21,36 @@
             </ul>
         </nav>
     </header>
-
     <!-- Div para cargar los datos que ya están en la bd -->
     <div class="objetivos">
+        <?php
+            require_once './php/connection.php';
+            // Conectar lo de id_empresa con el login
+            $query = "SELECT * FROM objetivos WHERE id_empresa=1;";
+            $result = mysqli_query($conn, $query);
+            $resultRows = mysqli_num_rows($result);
+            if ($resultRows > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='objetivo'><p>" . $row['descripcion'] . "</p><span class='material-symbols-outlined'>edit</span></div><hr>";
+                }
+            }
+        ?>
+
+        <!-- 
         <div class="objetivo">
             <p>1. Mejorar la eficiencia de tal</p>
             <span class="material-symbols-outlined">edit</span>
         </div> 
         <hr>
+        -->
 
-        <div class="objetivo">
-            <p>2. Aumentar las ventas de los productos de la marca tales</p>
-            <span class="material-symbols-outlined">edit</span>
-        </div>
-        <hr>
-
-        <div class="objetivo">
-            <p>3. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam dicta id tempora sapiente quisquam? Quaerat, porro? Eveniet laboriosam reiciendis quae.</p>
-            <span class="material-symbols-outlined">edit</span>
-        </div>
-        <hr>
-
-        <div class="objetivo">
-            <p>4. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, quam eius, excepturi nostrum mollitia atque cumque earum ipsam eveniet possimus ex exercitationem saepe aliquam praesentium? Aspernatur assumenda nisi eum architecto optio fuga porro sapiente quasi.</p>
-            <span class="material-symbols-outlined">edit</span>
-        </div>
-        <hr>
-        <form action="">
+        <form action="php/agregarObjetivo.php" method="post">
             <p>En el siguiente campo puede agregar más objetivos estratégicos, una vez haya terminado de escribir uno, presione "Agregar"</p>
-            <textarea placeholder='Objetivo estratégico' cols='175' rows='3' style='resize:none' required></textarea>
+            <textarea placeholder='Objetivo estratégico' cols='175' rows='3' style='resize:none' name='objetivo' required></textarea>
             <button type="submit">Agregar</button>
         </form>
     </div>
+    
     <script src="js/functions.js"></script>
 </body>
 </html>

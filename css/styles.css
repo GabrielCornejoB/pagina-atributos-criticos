@@ -119,24 +119,6 @@ form {
 form p {
     padding-bottom: 15px;
 }
-/* 
-.pasos {
-    padding-top: 150px;
-    margin-left: 10%;
-    margin-right: 10%;
-    text-align: center;
-}
-.pasos p {
-    font-family: 'Poppins', sans-serif;
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    margin-bottom: 15px;
-
-    margin-left: 10%;
-    margin-right: 10%;
-} */
-
 
 /* Scrollbar */
 ::-webkit-scrollbar {
