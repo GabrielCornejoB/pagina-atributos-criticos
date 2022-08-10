@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paso 1</title>
+    <title>Objetivos</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="shortcut icon" href="#"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -16,17 +16,16 @@
             <ul class="nav-links">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Objetivos</a></li>
-                <li><a href="#">Aspectos Problemáticos</a></li>
+                <li><a href="aspectosProblematicos.php">Aspectos Problemáticos</a></li>
                 <li><a href="#">Datos</a></li>
             </ul>
         </nav>
     </header>
-    <!-- Div para cargar los datos que ya están en la bd -->
     <div class="objetivos">
         <?php
             require_once './php/connection.php';
             // Conectar lo de id_empresa con el login
-            $query = "SELECT * FROM objetivos WHERE id_empresa=1;";
+            $query = "SELECT * FROM objetivos WHERE id_empresa=5;";
             $result = mysqli_query($conn, $query);
             $resultRows = mysqli_num_rows($result);
             if ($resultRows > 0) {

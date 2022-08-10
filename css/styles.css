@@ -84,6 +84,7 @@ button:hover {
     margin-left: 10%;
     margin-right: 10%;
 }
+
 .objetivos p {
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
@@ -118,6 +119,28 @@ form {
 
 form p {
     padding-bottom: 15px;
+}
+
+
+.problemas {
+    margin-top: 15px;
+    
+}
+
+.problemas p {
+    padding-left: 1%;
+    font-size: 15px;
+    color: whitesmoke;
+    margin-top: 5px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(34, 34, 41);
+    transition: all 0.3s ease 0s;
+}
+.problemas p:hover {
+    background-color: var(--principal);
+    cursor: pointer;
 }
 
 /* Scrollbar */
