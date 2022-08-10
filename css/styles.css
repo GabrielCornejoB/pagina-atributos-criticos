@@ -143,6 +143,18 @@ form p {
     cursor: pointer;
 }
 
+.problema-ext{
+    background-color: whitesmoke;
+}
+.problema-ext p {
+    background-color: transparent;
+    color: black;
+}
+.problema-ext p:hover {
+    cursor: default;
+    background-color: lightgray;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 20px;

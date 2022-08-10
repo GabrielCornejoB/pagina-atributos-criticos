@@ -21,6 +21,7 @@
             </ul>
         </nav>
     </header>
+    
     <div class="objetivos">
         <?php
             require_once './php/connection.php';
@@ -31,6 +32,7 @@
 
             $strHTML = "";
             if ($filasObj > 0) {
+                $count = 0;
                 while ($obj = mysqli_fetch_assoc($sqlObj)) {
                     $strHTML = $strHTML . "<p>" . $obj['descripcion'] . "</p>" . "<div class='problemas'>";
 
@@ -39,7 +41,21 @@
                     $filasProb = mysqli_num_rows($sqlProb);
                     if($filasProb > 0) {
                         while ($prob = mysqli_fetch_assoc($sqlProb)) {
+                            $count = $count + 1;
+                            $strHTML = $strHTML . "<div class='problema' onclick=\"infoProblema('problema$count')\">";
+
+                            $esDeDatos = "NO";
+                            if ($prob['es_de_datos'] == '1') {
+                                $esDeDatos = "SI";
+                            }
+
                             $strHTML = $strHTML . "<p>" . $prob['descripcion'] . "</p>";
+                            $strHTML = $strHTML . "<div class='problema-ext' id='problema" . $count . "' hidden>" . 
+                                                    "<p><strong>Justificación: </strong>" . $prob['justificacion'] ."</p>" . 
+                                                    "<p><strong>Es ocasionado por calidad de datos: </strong>" . $esDeDatos . "</p>" . 
+                                                    "<p><strong>Justificacion de porque es ocasionado o no por calidad de datos: </strong>" . $prob['justificacion_es_de_datos'] . "</p></div>";
+
+                            $strHTML = $strHTML . "</div>";
                         }      
                     }         
                     $strHTML = $strHTML . "</div><hr>";
@@ -48,5 +64,13 @@
             }
         ?>
     </div>
+    <script>
+        function infoProblema(idDiv) {
+            let div = document.getElementById(idDiv);
+            if(div.hidden === true) { div.hidden = false; }
+            else { div.hidden = true; }
+        }
+    </script>
+    <!-- <script src="./js/functions.js"></script>  -->
 </body>
 </html>
