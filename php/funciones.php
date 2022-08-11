@@ -44,9 +44,8 @@ function generarSelect () {
     $sqlObj = mysqli_query($conn, $queryObj);
     $filasObj = mysqli_num_rows($sqlObj);
     if ($filasObj > 0) {
-        $count = 0;
         while ($obj = mysqli_fetch_assoc($sqlObj)) {
-            echo "<option value='$count'>" . substr($obj['descripcion'],0,40) . "</option>";
+            echo "<option value='" . $obj['id_objetivo'] . "'>" . substr($obj['descripcion'],0,40) . "</option>";
         }
     }
 }

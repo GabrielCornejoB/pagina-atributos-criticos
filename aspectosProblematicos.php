@@ -34,7 +34,7 @@
         <form action="./php/agregarProblema.php" method="post">
             <p>En el siguiente campo puede agregar más objetivos aspectos problemáticos, una vez haya terminado de escribir uno, presione "Agregar"</p>
             
-            <select name="objetivo-ap" id="objetivos">
+            <select name="objetivoAP" id="objetivos">
                 <?php
                     generarSelect();
                 ?>           
@@ -47,9 +47,9 @@
             <div class="radios-problemas">
                 <p>¿El problema es ocasionado por calidad de datos?</p>
                 <div class="radios"><div class="label-radio"><label for="si">SI</label>
-                <input type="radio" name="esDeDatos" id="si" checked></div>
+                <input type="radio" name="esDeDatos" id="si" value='1' checked></div>
                 <div class="label-radio"><label for="no">NO</label>
-                <input type="radio" name="esDeDatos" id="no"></div></div>
+                <input type="radio" name="esDeDatos" id="no" value='0'></div></div>
             </div>
             <!-- radio -->
             <br>
