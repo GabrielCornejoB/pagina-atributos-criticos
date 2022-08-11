@@ -186,7 +186,7 @@ input {
 }
 
 select {
-    width: 50%;
+    width: 80%;
     margin-bottom: 15px;
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
@@ -195,6 +195,10 @@ select {
     padding: 5px 10px;
 }
 
+.txt-input {
+    margin-left: 20px;
+    margin-right: 20px;
+}
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 15px;
