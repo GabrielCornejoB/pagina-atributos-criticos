@@ -40,7 +40,6 @@ function generarAspectosP () {
 }
 function generarSelect () {
     require './php/connection.php';
-    // Conectar lo de id_empresa con el login
     $queryObj = "SELECT * FROM objetivos WHERE id_empresa=1;";
     $sqlObj = mysqli_query($conn, $queryObj);
     $filasObj = mysqli_num_rows($sqlObj);
