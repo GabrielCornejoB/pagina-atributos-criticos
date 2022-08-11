@@ -45,6 +45,7 @@
 
         <form action="php/agregarObjetivo.php" method="post">
             <p>En el siguiente campo puede agregar más objetivos estratégicos, una vez haya terminado de escribir uno, presione "Agregar"</p>
+            <br>
             <textarea placeholder='Objetivo estratégico' rows='3' style='resize:none' name='objetivo' required></textarea>
             <br>
             <button type="submit">Agregar</button>

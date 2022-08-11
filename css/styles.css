@@ -156,9 +156,48 @@ form p {
     background-color: lightgray;
 }
 
+.radios-problemas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.radios-problemas p{
+    font-size: 15px;
+    padding-bottom: 0;
+}
+.radios-problemas label {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.radios {
+    display: flex;
+    flex-direction: row;
+}
+.radios div {
+    margin-left: 30px;
+}
+input {
+    vertical-align: middle;
+}
+
+select {
+    width: 50%;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    padding: 5px 10px;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 15px;
 }
 ::-webkit-scrollbar-track {
     background: #dddddd;
