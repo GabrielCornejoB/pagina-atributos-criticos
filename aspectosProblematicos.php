@@ -26,7 +26,7 @@
         <?php
             require_once './php/connection.php';
             // Conectar lo de id_empresa con el login
-            $queryObj = "SELECT * FROM objetivos WHERE id_empresa=5;";
+            $queryObj = "SELECT * FROM objetivos WHERE id_empresa=1;";
             $sqlObj = mysqli_query($conn, $queryObj);
             $filasObj = mysqli_num_rows($sqlObj);
 
@@ -71,6 +71,5 @@
             else { div.hidden = true; }
         }
     </script>
-    <!-- <script src="./js/functions.js"></script>  -->
 </body>
 </html>

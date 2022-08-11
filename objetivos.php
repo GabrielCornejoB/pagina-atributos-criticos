@@ -25,7 +25,7 @@
         <?php
             require_once './php/connection.php';
             // Conectar lo de id_empresa con el login
-            $query = "SELECT * FROM objetivos WHERE id_empresa=5;";
+            $query = "SELECT * FROM objetivos WHERE id_empresa=1;";
             $result = mysqli_query($conn, $query);
             $resultRows = mysqli_num_rows($result);
             if ($resultRows > 0) {
@@ -45,7 +45,8 @@
 
         <form action="php/agregarObjetivo.php" method="post">
             <p>En el siguiente campo puede agregar más objetivos estratégicos, una vez haya terminado de escribir uno, presione "Agregar"</p>
-            <textarea placeholder='Objetivo estratégico' cols='175' rows='3' style='resize:none' name='objetivo' required></textarea>
+            <textarea placeholder='Objetivo estratégico' rows='3' style='resize:none' name='objetivo' required></textarea>
+            <br>
             <button type="submit">Agregar</button>
         </form>
     </div>
