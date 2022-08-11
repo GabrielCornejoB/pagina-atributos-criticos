@@ -116,6 +116,7 @@ form {
     text-align: center;
     background-color: rgb(34, 34, 41);
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 form p {

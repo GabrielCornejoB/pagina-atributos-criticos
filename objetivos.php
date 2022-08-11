@@ -1,3 +1,6 @@
+<?php
+    require_once "php/funciones.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,25 +26,8 @@
     </header>
     <div class="objetivos">
         <?php
-            require_once './php/connection.php';
-            // Conectar lo de id_empresa con el login
-            $query = "SELECT * FROM objetivos WHERE id_empresa=1;";
-            $result = mysqli_query($conn, $query);
-            $resultRows = mysqli_num_rows($result);
-            if ($resultRows > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='objetivo'><p>" . $row['descripcion'] . "</p><span class='material-symbols-outlined'>edit</span></div><hr>";
-                }
-            }
+            generarObjetivos();
         ?>
-
-        <!-- 
-        <div class="objetivo">
-            <p>1. Mejorar la eficiencia de tal</p>
-            <span class="material-symbols-outlined">edit</span>
-        </div> 
-        <hr>
-        -->
 
         <form action="php/agregarObjetivo.php" method="post">
             <p class="txt-input">En el siguiente campo puede agregar más objetivos estratégicos, una vez haya terminado de escribir uno, presione "Agregar"</p>

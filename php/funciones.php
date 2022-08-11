@@ -1,4 +1,17 @@
 <?php
+function generarObjetivos () {
+    require_once './php/connection.php';
+    // Conectar lo de id_empresa con el login
+    $query = "SELECT * FROM objetivos WHERE id_empresa=1;";
+    $result = mysqli_query($conn, $query);
+    $resultRows = mysqli_num_rows($result);
+    if ($resultRows > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<div class='objetivo'><p>" . $row['descripcion'] . "</p><span class='material-symbols-outlined'>edit</span></div><hr>";
+        }
+    }
+}
+
 function generarAspectosP () {
     require './php/connection.php';
     // Conectar lo de id_empresa con el login
