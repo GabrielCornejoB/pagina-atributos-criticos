@@ -63,6 +63,7 @@ function generarSelect () {
     }
 }
 function generarDatos () {
+    setlocale(LC_MONETARY,"en_US");
     require './php/connection.php';
     // Conectar lo de id_empresa con el login
     $queryObj = "SELECT * FROM objetivos WHERE id_empresa=1;";
@@ -89,11 +90,12 @@ function generarDatos () {
                         $sqlDato = mysqli_query($conn, $queryDato);
                         $filasDato = mysqli_num_rows($sqlDato);
                         if ($filasDato > 0) {    
+                            
                             while ($dato = mysqli_fetch_assoc($sqlDato)) {
                                 echo "<tr>";
                                 echo "<td>" . $dato['descripcion'] . "</td>";
                                 echo "<td>" . $dato['frecuencia_mensual'] . "</td>";
-                                echo "<td>" . $dato['valor_particular_anual'] . "</td>";
+                                echo "<td>$" . $dato['valor_particular_anual'] . "</td>";
                                 echo "<td>" . $dato['justificacion_financiera'] . "</td>";
                                 echo "</tr>";
                             }      

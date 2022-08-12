@@ -28,6 +28,19 @@
         <?php
             generarDatos();
         ?>
+        <form action="./php/agregarDato.php" action="post">
+            <p class="txt-input">En el siguiente campo puede agregar más datos, una vez haya terminado de escribir uno, presione "Agregar"</p>
+            <br>
+            <div class="inputs-datos">
+                <input type="text" name="dato" placeholder='Descripción dato'>
+                <input type="number" name="frecuencia" placeholder='Frecuencia mensual'>
+                <input type="number" name="costo" placeholder='Valor aprox mensual'>
+            </div>    
+            <br>
+            <textarea placeholder='Justificación de la frecuencia y del valor del dato' rows='3' style='resize:none' name='justParticular' required></textarea>
+            <br>
+            <button type="submit">Agregar</button>
+        </form>
     </div>
 </body>
 </html>

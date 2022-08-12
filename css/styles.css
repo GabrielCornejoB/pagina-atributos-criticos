@@ -233,6 +233,21 @@ td, th {
     margin-left: 20px;
     margin-right: 20px;
 }
+
+.inputs-datos {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: space-between;
+}
+.inputs-datos input {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    padding: 5px 10px;
+}
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 15px;
