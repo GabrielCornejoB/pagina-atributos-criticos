@@ -20,8 +20,8 @@
             <ul class="nav-links">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="objetivos.php">Objetivos</a></li>
-                <li><a href="#">Aspectos Problemáticos</a></li>
-                <li><a href="#">Datos</a></li>
+                <li><a href="aspectosProblematicos.php">Aspectos Problemáticos</a></li>
+                <li><a href="datos.php">Datos</a></li>
             </ul>
         </nav>
     </header>
