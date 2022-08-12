@@ -37,7 +37,5 @@
             <button type="submit">Agregar</button>
         </form>
     </div>
-    
-    <script src="js/functions.js"></script>
 </body>
 </html>

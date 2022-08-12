@@ -37,13 +37,13 @@ function generarAspectosP () {
                         $esDeDatos = "SI";
                     }
 
-                    $strHTML = $strHTML . "<p>" . $prob['descripcion'] . "</p>";
+                    $strHTML = $strHTML . "<p>" . $prob['descripcion'] . "</p></div>";      // Si falla el ext quitar este ultimo </div>
                     $strHTML = $strHTML . "<div class='problema-ext' id='problema" . $count . "' hidden>" . 
                                             "<p><strong>Justificación: </strong>" . $prob['justificacion'] ."</p>" . 
                                             "<p><strong>Es ocasionado por calidad de datos: </strong>" . $esDeDatos . "</p>" . 
                                             "<p><strong>Justificacion de porque es ocasionado o no por calidad de datos: </strong>" . $prob['justificacion_es_de_datos'] . "</p></div>";
 
-                    $strHTML = $strHTML . "</div>";
+                    // $strHTML = $strHTML . "</div>";
                 }      
             }         
             $strHTML = $strHTML . "</div><hr>";

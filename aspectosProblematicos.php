@@ -52,7 +52,6 @@
                 <div class="label-radio"><label for="no">NO</label>
                 <input type="radio" name="esDeDatos" id="no" value='0'></div></div>
             </div>
-            <!-- radio -->
             <br>
             <textarea placeholder='Justificación porque es o no ocasionado por calidad de datos' rows='3' style='resize:none' name='justCalidad' required></textarea>
             <br>
