@@ -28,7 +28,7 @@
         <?php
             generarDatos();
         ?>
-        <form action="./php/agregarDato.php" method="post">
+        <form action="./php/agregarDato.php" method="post" style="margin-bottom:50px">
             <p class="txt-input">En el siguiente campo puede agregar más datos, una vez haya terminado de escribir uno, presione "Agregar"</p>
             <br>
             <select name="problemaD" id="problemas" required>
@@ -39,7 +39,15 @@
             </select>
             <br>
             <div class="inputs-datos">
-                <input type="text" name="dato" placeholder='Descripción dato' required>
+                <input type="text" name="dato" list="datosDefinidos" placeholder='Descripción dato' required>
+                <datalist id='datosDefinidos'>
+                    <option value="Nombre"></option>
+                    <option value="e-mail"></option>
+                    <option value="Dirección"></option>
+                    <option value="Precio"></option>
+                    <option value="Cantidad"></option>
+                    <option value="Marca"></option>
+                </datalist>
                 <input type="number" name="frecuencia" placeholder='Frecuencia mensual' required>
                 <input type="number" name="costo" placeholder='Valor aprox mensual' required>
             </div>    
