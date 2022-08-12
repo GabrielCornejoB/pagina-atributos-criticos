@@ -105,11 +105,13 @@ button:hover {
     justify-content: space-between;
     align-items: center;
 }
-.objetivo span:hover {
-    color: yellow;
+/* .objetivo span:hover {
+    color: black;
+    border-radius: 50%;
     cursor: pointer;
+    background-color: yellow;
     transition: all 0.3s ease 0s;
-}
+} */
 
 form {
     padding: 20px 0;
@@ -145,6 +147,7 @@ form p {
     cursor: pointer;
 }
 
+
 .problema-ext{
     background-color: whitesmoke;
 }
@@ -155,6 +158,12 @@ form p {
 .problema-ext p:hover {
     cursor: default;
     background-color: lightgray;
+}
+
+.prob-titulo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .radios-problemas {
@@ -205,7 +214,7 @@ select {
     width: 15px;
 }
 ::-webkit-scrollbar-track {
-    background: #dddddd;
+    background: #6d6d6d;
 }
 ::-webkit-scrollbar-thumb {
     background: var(--principal);
@@ -213,9 +222,20 @@ select {
 
 .material-symbols-outlined {
     color: white;
+    padding: 5px;
+    border-radius: 50%;
     font-variation-settings:
     'FILL' 0,
     'wght' 400,
     'GRAD' 0,
     'opsz' 48
 }
+
+.material-symbols-outlined:hover {
+    color: black;   
+    cursor: pointer;
+    background-color: yellow;
+    transition: all 0.5s ease-out 0s;
+    transform: scale(1.2);
+}
+

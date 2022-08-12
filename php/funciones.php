@@ -22,7 +22,7 @@ function generarAspectosP () {
     if ($filasObj > 0) {
         $count = 0;
         while ($obj = mysqli_fetch_assoc($sqlObj)) {
-            $strHTML = $strHTML . "<p>" . $obj['descripcion'] . "</p>" . "<div class='problemas'>";
+            $strHTML = $strHTML . "<div class='prob-titulo'><p>" . $obj['descripcion'] . "</p><span class='material-symbols-outlined'>edit</span></div>" . "<div class='problemas'>";
 
             $queryProb = "SELECT * FROM problemas WHERE id_objetivo=" . $obj['id_objetivo'];
             $sqlProb = mysqli_query($conn, $queryProb);
