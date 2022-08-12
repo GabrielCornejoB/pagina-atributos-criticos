@@ -11,7 +11,6 @@ function generarObjetivos () {
         }
     }
 }
-
 function generarAspectosP () {
     require './php/connection.php';
     // Conectar lo de id_empresa con el login
@@ -105,6 +104,17 @@ function generarDatos () {
             }
             echo "</table>";
             echo "</div><hr>";
+        }
+    }
+}
+function generarSelectProbs () {
+    require './php/connection.php';
+    $queryProb = "SELECT * FROM problemas";
+    $sqlProb = mysqli_query($conn, $queryProb);
+    $filasProb = mysqli_num_rows($sqlProb);
+    if ($filasProb > 0) {
+        while ($prob = mysqli_fetch_assoc($sqlProb)) {
+            echo "<option value='" . $prob['id_problema'] . "'>" . substr($prob['descripcion'],0,70) . "</option>";
         }
     }
 }

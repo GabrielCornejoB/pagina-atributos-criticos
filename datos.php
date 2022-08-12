@@ -28,16 +28,23 @@
         <?php
             generarDatos();
         ?>
-        <form action="./php/agregarDato.php" action="post">
+        <form action="./php/agregarDato.php" method="post">
             <p class="txt-input">En el siguiente campo puede agregar más datos, una vez haya terminado de escribir uno, presione "Agregar"</p>
             <br>
+            <select name="problemaD" id="problemas" required>
+                <option disabled selected value style="color:gray"> -- seleccione el objetivo al que pertenece el aspecto problemático -- </option>
+                <?php
+                    generarSelectProbs();
+                ?>
+            </select>
+            <br>
             <div class="inputs-datos">
-                <input type="text" name="dato" placeholder='Descripción dato'>
-                <input type="number" name="frecuencia" placeholder='Frecuencia mensual'>
-                <input type="number" name="costo" placeholder='Valor aprox mensual'>
+                <input type="text" name="dato" placeholder='Descripción dato' required>
+                <input type="number" name="frecuencia" placeholder='Frecuencia mensual' required>
+                <input type="number" name="costo" placeholder='Valor aprox mensual' required>
             </div>    
             <br>
-            <textarea placeholder='Justificación de la frecuencia y del valor del dato' rows='3' style='resize:none' name='justParticular' required></textarea>
+            <textarea placeholder='Justificación de la frecuencia y del valor del dato' rows='3' style='resize:none' name='justFinan' required></textarea>
             <br>
             <button type="submit">Agregar</button>
         </form>
