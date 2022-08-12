@@ -114,7 +114,9 @@ function generarSelectProbs () {
     $filasProb = mysqli_num_rows($sqlProb);
     if ($filasProb > 0) {
         while ($prob = mysqli_fetch_assoc($sqlProb)) {
-            echo "<option value='" . $prob['id_problema'] . "'>" . substr($prob['descripcion'],0,70) . "</option>";
+            if ($prob['es_de_datos'] == 1) {
+                echo "<option value='" . $prob['id_problema'] . "'>" . substr($prob['descripcion'],0,70) . "</option>";
+            }   
         }
     }
 }
