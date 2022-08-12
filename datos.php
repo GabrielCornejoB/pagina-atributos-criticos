@@ -24,8 +24,10 @@
             </ul>
         </nav>
     </header>
-    
-
-
+    <div class="objetivos">
+        <?php
+            generarDatos();
+        ?>
+    </div>
 </body>
 </html>

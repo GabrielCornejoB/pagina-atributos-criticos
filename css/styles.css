@@ -105,13 +105,6 @@ button:hover {
     justify-content: space-between;
     align-items: center;
 }
-/* .objetivo span:hover {
-    color: black;
-    border-radius: 50%;
-    cursor: pointer;
-    background-color: yellow;
-    transition: all 0.3s ease 0s;
-} */
 
 form {
     padding: 20px 0;
@@ -204,6 +197,37 @@ select {
     font-size: 15px;
     padding: 5px 10px;
 }
+
+/* .tablas {
+    
+} */
+table {
+    margin: 0 auto;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    border-spacing: 0;
+    border-radius: 10px;
+}
+
+td, th {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    margin: 0;
+    padding: 0;
+}
+.prob-tabla {
+    font-weight: bold;
+    font-size: 17px;
+    background-color: var(--principal);
+    color: white;
+}
+
 
 .txt-input {
     margin-left: 20px;
