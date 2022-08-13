@@ -14,34 +14,51 @@
         <h1 class="titulo-header">MODIFICAR</h1>
         <nav>
             <ul class="nav-links">
-                <li><a href="objetivos.php">Regresar</a></li>
+                <?php
+                if(isset($_POST['id_tipo'])) {
+                    $tipo = $_POST['id_tipo'];
+                    if ($tipo == 1) {
+                        echo "<li><a href='objetivos.php'>Regresar</a></li>";
+                    }
+                    elseif ($tipo == 2) {
+                        echo "<li><a href='aspectosProblematicos.php'>Regresar</a></li>";
+                    }
+                    elseif ($tipo == 3) {
+                        echo "<li><a href='datos.php'>Regresar</a></li>";
+                    }
+                }
+                ?> 
             </ul>
         </nav>
     </header>
     <div class='div-editar'>
-        <form action="" method="post">
         <?php
             if(isset($_POST['id_tipo'])) {
                 $tipo = $_POST['id_tipo'];
                 if ($tipo == 1) {
                     $idObj = $_POST['id_obj'];
                     $descObj = $_POST['desc_obj'];
-                    echo "<p>Aquí puede modificar la descripción del objetivo que eligió, si desea guardar los cambios presione <strong>\"Actualizar\"</strong>, si desea volver y descartar los cambios presione <strong>\"Regresar\"</strong></p>";
-                    echo "<textarea rows='3' style='resize:none' name='objetivo' required>" . $descObj . "</textarea><br>";
-                    echo "<button type='submit'>Actualizar</button>";
+                    echo "<form action='php/editarObjetivo.php' method='post'>";
+                        echo "<p>Aquí puede modificar la descripción del objetivo que eligió, si desea guardar los cambios presione <strong>\"Actualizar\"</strong>, si desea volver y descartar los cambios presione <strong>\"Regresar\"</strong></p>";
+                        echo "<input type='text' name='id_obj2' hidden value='" . $idObj . "'>";
+                        echo "<textarea rows='3' style='resize:none' name='nuevo_obj' required>" . $descObj . "</textarea><br>";
+                        echo "<button type='submit'>Actualizar</button>";
+                    echo "</form>";
                 }
                 elseif ($tipo == 2) {
-                    $idProb = $_POST['id_prob'];
+                    // $idProb = $_POST['id_prob'];
+                    echo "hola2";
                 }
                 elseif ($tipo == 3) {
-                    $idDato = $_POST['id_dato'];
+                    // $idDato = $_POST['id_dato'];
+                    echo "hola3";
                 }
             }
             else {
                 header("location: objetivos.php");
             }
         ?>
-        </form>  
+         
     </div>
     
 </body>
