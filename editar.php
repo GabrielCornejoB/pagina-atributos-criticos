@@ -74,8 +74,14 @@
                         echo "</form>";
                 }
                 elseif ($tipo == 3) {
-                    // $idDato = $_POST['id_dato'];
-                    echo "hola3";
+                    $idDato = $_POST['id_dato'];
+
+                    require_once "php/connection.php";
+                    $query = "SELECT * FROM datos WHERE id_dato='$idDato';";
+                    $sqlDato = mysqli_query($conn, $query);
+                    $dato = mysqli_fetch_assoc($sqlDato);
+
+                    echo $dato['descripcion'] . "<br>" . $dato['frecuencia_mensual'] . "<br>" . $dato['valor_particular_anual'] . "<br>" . $dato['justificacion_financiera'];
                 }
             }
             else {
