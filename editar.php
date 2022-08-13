@@ -78,6 +78,12 @@
                         echo "<textarea rows='3' style='resize:none' name='nuevo_prob_just_d' required>" . $prob['justificacion_es_de_datos'] . "</textarea><br>";
                         echo "<button type='submit'>Actualizar</button>";
                     echo "</form>";
+
+                    echo "<form action='php/eliminarProblema.php' method='post'>";
+                        echo "<p style='color:red'>¡CUIDADO!, presionando el botón <strong>\"Eliminar\"</strong> eliminará el aspecto problemático y todos los datos que estén relacionados a este.</p>";
+                        echo "<input type='text' name='id_prob2' hidden value='" . $idProb . "'>";
+                        echo "<button type='submit'>ELIMINAR</button>";
+                    echo "</form>";
                 }
                 elseif ($tipo == 3) {
                     $idDato = $_POST['id_dato'];
