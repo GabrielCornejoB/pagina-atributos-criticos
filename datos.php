@@ -32,7 +32,7 @@
             <p class="txt-input">En el siguiente campo puede agregar más datos, una vez haya terminado de escribir uno, presione "Agregar"</p>
             <br>
             <select name="problemaD" id="problemas" required>
-                <option disabled selected value style="color:gray"> -- seleccione el objetivo al que pertenece el aspecto problemático -- </option>
+                <option disabled selected value style="color:gray"> -- seleccione el aspecto problemático al que pertenecerá el nuevo dato -- </option>
                 <?php
                     generarSelectProbs();
                 ?>

@@ -35,7 +35,7 @@
             <p>En el siguiente campo puede agregar más objetivos aspectos problemáticos, una vez haya terminado de escribir uno, presione "Agregar"</p>
             
             <select name="objetivoAP" id="objetivos" required>
-                <option disabled selected value style="color:gray"> -- seleccione el objetivo al que pertenece el aspecto problemático -- </option>
+                <option disabled selected value style="color:gray"> -- seleccione el objetivo al que pertenecerá el nuevo aspecto problemático -- </option>
                 <?php
                     generarSelect();
                 ?>           

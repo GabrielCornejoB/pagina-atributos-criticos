@@ -1,3 +1,6 @@
+<?php
+    require_once "php/funciones.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,8 +49,8 @@
                     echo "</form>";
                 }
                 elseif ($tipo == 2) {
-                    // $idProb = $_POST['id_prob'];
-                    echo "hola2";
+                    $idObj= $_POST['id_obj'];         
+                    generarFormEditarP($idObj);
                 }
                 elseif ($tipo == 3) {
                     // $idDato = $_POST['id_dato'];

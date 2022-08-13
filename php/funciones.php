@@ -30,6 +30,7 @@ function generarAspectosP () {
             $strHTML = $strHTML . "<div class='prob-titulo'><p>" . $obj['descripcion'] . "</p>" . 
                                     "<form action='./editar.php' method='post' class='form-edit'>" . 
                                         "<input type='text' name='id_tipo' value='2' hidden>" . 
+                                        "<input type='text' name='id_obj' hidden value='" . $obj['id_objetivo'] . "'>" .
                                         "<button type='submit'><span class='material-symbols-outlined'>edit</span></div></button>" . 
                                     "</form><div class='problemas'>";
 
@@ -130,7 +131,24 @@ function generarSelectProbs () {
         }
     }
 }
-function editarObjetivo ($id_obj) {
+function generarFormEditarP ($id_obj) {
     require './php/connection.php';
+    $queryProb = "SELECT * FROM problemas WHERE id_objetivo='$id_obj';";
+    $sqlProb = mysqli_query($conn, $queryProb);
+    $filasProb = mysqli_num_rows($sqlProb);
+    if ($filasProb > 0) {
+        echo "<form action='php/editarProblema.php' method='post'>";
+            echo "<p>Aquí puede modificar la los valores de un aspecto problemático, primero debe elegir que aspecto problemático quiere modificar, y luego en los campos de texto puede colocar los nuevos valores. Si desea guardar los cambios presione <strong>\"Aplicar\"</strong>, si desea descartar los cambios presione <strong>\"Regresar\"</strong></p>";
+            echo "<select name='aspectosP' required>";
+            echo "<option disabled selected value style='color:gray'> -- seleccione el aspecto problemático que desea modificar-- </option>";
+            while ($prob = mysqli_fetch_assoc($sqlProb)) {  
+                echo "<option value='" . $prob['id_problema'] . "'>" . substr($prob['descripcion'],0,70) . "</option>";
+            }
+            echo "</select>";
 
+        echo "</form>";
+    }
+    else {
+        echo "<p>Este objetivo no tiene aspectos problemáticos</p>";
+    }
 }
