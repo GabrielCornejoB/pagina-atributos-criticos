@@ -71,7 +71,7 @@
                         echo "<p style='font-size:15px;'>Justificación de porque es o no ocasionado por calidad de datos</p>";
                         echo "<textarea rows='3' style='resize:none' name='nuevo_prob_just_d' required>" . $prob['justificacion_es_de_datos'] . "</textarea><br>";
                         echo "<button type='submit'>Actualizar</button>";
-                        echo "</form>";
+                    echo "</form>";
                 }
                 elseif ($tipo == 3) {
                     $idDato = $_POST['id_dato'];
@@ -81,7 +81,29 @@
                     $sqlDato = mysqli_query($conn, $query);
                     $dato = mysqli_fetch_assoc($sqlDato);
 
-                    echo $dato['descripcion'] . "<br>" . $dato['frecuencia_mensual'] . "<br>" . $dato['valor_particular_anual'] . "<br>" . $dato['justificacion_financiera'];
+                    echo "<form action='php/editarDato.php' method='post'>";
+                        echo "<p>Aquí puede modificar la información del Dato que eligió, si desea guardar los cambios presione <strong>\"Actualizar\"</strong>, si desea volver y descartar los cambios presione <strong>\"Regresar\"</strong></p>";
+                        echo "<div class='edit-datos'>";
+                        echo "<input type='text' name='id_dato2' hidden value='" . $idDato . "'>";
+                        
+                        echo "<p style='font-size:15px;'>Descripción del Dato</p>";
+                        echo "<input type='text' name='dato' list='datosDefinidos' value='" . $dato['descripcion'] . "' required><br>";
+                        echo "<datalist id='datosDefinidos'><option value='Nombre'></option><option value='e-mail'></option><option value='Dirección'></option><option value='Precio'></option><option value='Cantidad'></option><option value='Marca'></option></datalist>";
+                        
+                        echo "<p style='font-size:15px;'>Frecuencia mensual</p>";
+                        echo "<input type='number' name='frecuencia' placeholder='" . $dato['frecuencia_mensual'] . "' required><br>";
+                    
+                        echo "<p style='font-size:15px;'>Valor aproximado mensual</p>";
+                        $valMensual = $dato['valor_particular_anual'] / 12;
+                        echo "<input type='number' name='valorMensual' placeholder='" . $valMensual . "' required><br>";
+
+                        echo "<p style='font-size:15px;'>Justificación de los valores anteriores</p>";
+                        echo "</div>";
+           
+                        echo "<textarea rows='3' style='resize:none' name='justFinan' required>" . $dato['justificacion_financiera'] . "</textarea><br>";
+
+                        echo "<button type='submit'>Agregar</button>";
+                    echo "</form>";
                 }
             }
             else {
