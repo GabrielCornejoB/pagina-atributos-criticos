@@ -49,18 +49,29 @@
                     echo "</form>";
                 }
                 elseif ($tipo == 2) {
-                    $idProb= $_POST['id_prob'];  
-                    echo $idProb;       
+                    $idProb= $_POST['id_prob']; 
                     require_once "php/connection.php";
                     $query = "SELECT * FROM problemas WHERE id_problema='$idProb';";
                     $sqlProb = mysqli_query($conn, $query);
                     $filasProb = mysqli_num_rows($sqlProb);
                     $prob = mysqli_fetch_assoc($sqlProb);
-                    echo $prob['id_problema'] . "<br>";
-                    echo $prob['descripcion'] . "<br>";
-                    echo $prob['justificacion'] . "<br>";
-                    echo $prob['es_de_datos'] . "<br>";
-                    echo $prob['justificacion_es_de_datos'] . "<br>";
+
+                    echo "<form action='php/editarProblema.php' method='post'>";
+                        echo "<p>Aquí puede modificar la información del Aspecto Problemático que eligió, si desea guardar los cambios presione <strong>\"Actualizar\"</strong>, si desea volver y descartar los cambios presione <strong>\"Regresar\"</strong></p>";
+                        echo "<input type='text' name='id_prob2' hidden value='" . $idProb . "'>";
+                        echo "<p style='font-size:15px;'>Descripción del aspecto problemático</p>";
+                        echo "<textarea rows='3' style='resize:none' name='nuevo_prob' required>" . $prob['descripcion'] . "</textarea><br>";
+                        echo "<p style='font-size:15px;'>Justificación del aspecto problemático</p>";
+                        echo "<textarea rows='3' style='resize:none' name='nuevo_prob_just' required>" . $prob['justificacion'] . "</textarea><br>";
+                        echo "<div class='radios-problemas'>" . 
+                                "<p>¿El problema es ocasionado por calidad de datos?</p>" .
+                                "<div class='radios'><div class='label-radio'><label for='si'>SI</label><input type='radio' name='esDeDatos' id='si' value='1' checked></div>" . 
+                                "<div class='label-radio'><label for='no'>NO</label><input type='radio' name='esDeDatos' id='no' value='0'></div></div>" . 
+                              "</div><br>";
+                        echo "<p style='font-size:15px;'>Justificación de porque es o no ocasionado por calidad de datos</p>";
+                        echo "<textarea rows='3' style='resize:none' name='nuevo_prob_just_d' required>" . $prob['justificacion_es_de_datos'] . "</textarea><br>";
+                        echo "<button type='submit'>Actualizar</button>";
+                        echo "</form>";
                 }
                 elseif ($tipo == 3) {
                     // $idDato = $_POST['id_dato'];

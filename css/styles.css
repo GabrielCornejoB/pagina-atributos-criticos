@@ -277,6 +277,8 @@ td, th {
     color: white;
     font-size: 20px;
 }
+
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 15px;
