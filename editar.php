@@ -47,6 +47,12 @@
                         echo "<textarea rows='3' style='resize:none' name='nuevo_obj' required>" . $descObj . "</textarea><br>";
                         echo "<button type='submit'>Actualizar</button>";
                     echo "</form>";
+
+                    echo "<form action='php/eliminarObjetivo.php' method='post'>";
+                        echo "<p style='color:red'>¡CUIDADO!, presionando el botón <strong>\"Eliminar\"</strong> eliminará el objetivo y todos los aspectos problemáticos y datos que estén relacionados a este.</p>";
+                        echo "<input type='text' name='id_obj2' hidden value='" . $idObj . "'>";
+                        echo "<button type='submit'>ELIMINAR</button>";
+                    echo "</form>";
                 }
                 elseif ($tipo == 2) {
                     $idProb= $_POST['id_prob']; 
