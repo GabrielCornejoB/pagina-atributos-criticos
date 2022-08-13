@@ -118,10 +118,8 @@ form p {
     padding-bottom: 15px;
 }
 
-
 .problemas {
-    margin-top: 15px;
-    
+    margin-top: 15px;  
 }
 
 .problemas p {
@@ -247,6 +245,34 @@ td, th {
     color: black;
     font-size: 15px;
     padding: 5px 10px;
+}
+
+
+.form-edit {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+.form-edit button {
+    border: transparent;
+    padding: 0px 0px 0px 0px!important;
+    margin: 0!important;
+}
+.form-edit button:hover {
+    background: transparent;
+}
+
+.div-editar {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 150px;
+    text-align: center;
+}
+.div-editar p {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
 }
 /* Scrollbar */
 ::-webkit-scrollbar {

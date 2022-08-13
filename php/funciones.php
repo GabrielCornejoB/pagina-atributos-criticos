@@ -7,7 +7,13 @@ function generarObjetivos () {
     $resultRows = mysqli_num_rows($result);
     if ($resultRows > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            echo "<div class='objetivo'><p>" . $row['descripcion'] . "</p><span class='material-symbols-outlined'>edit</span></div><hr>";
+            echo "<div class='objetivo'><p>" . $row['descripcion'] . "</p>" . 
+                    "<form action='./editar.php' method='post' class='form-edit'>" . 
+                        "<input type='text' name='id_tipo' value='1' hidden>" . 
+                        "<input type='text' name='id_obj' hidden value='" . $row['id_objetivo'] . "'>" .
+                        "<input type='text' name='desc_obj' hidden value='" . $row['descripcion'] . "'>" .
+                        "<button type='submit'><span class='material-symbols-outlined'>edit</span></button>" . 
+                    "</form></div><hr>";
         }
     }
 }
@@ -119,4 +125,8 @@ function generarSelectProbs () {
             }   
         }
     }
+}
+function editarObjetivo ($id_obj) {
+    require './php/connection.php';
+
 }
