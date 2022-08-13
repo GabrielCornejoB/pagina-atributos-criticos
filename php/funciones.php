@@ -132,3 +132,19 @@ function generarSelectProbs () {
         }
     }
 }
+function generarNav() {  
+    if (isset($_SESSION['user'])) {
+        echo "<nav>" .
+                "<ul class='nav-links'>" .
+                    "<li><a href='#'>Inicio</a></li>" .
+                    "<li><a href='objetivos.php'>Objetivos</a></li>" .
+                    "<li><a href='aspectosProblematicos.php'>Aspectos Problemáticos</a></li>" .
+                    "<li><a href='datos.php'>Datos</a></li>" .
+                "</ul>" .
+            "</nav>";
+    }
+    else {
+        header("location: index.php");
+        exit();
+    }
+}

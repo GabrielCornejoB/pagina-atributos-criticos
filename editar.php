@@ -1,5 +1,6 @@
 <?php
-    require_once "php/funciones.php";
+    session_start();
+    require_once "php/funciones.php";  
 ?>
 <!DOCTYPE html>
 <html lang="en">

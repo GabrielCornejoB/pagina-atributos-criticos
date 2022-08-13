@@ -1,5 +1,6 @@
 <?php
-    require_once "php/funciones.php";
+    session_start();
+    require_once "php/funciones.php"; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,14 +16,9 @@
 <body>
     <header class="navbar">
         <h1 class="titulo-header">OBJETIVOS ESTRATÉGICOS</h2>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="objetivos.php">Objetivos</a></li>
-                <li><a href="aspectosProblematicos.php">Aspectos Problemáticos</a></li>
-                <li><a href="datos.php">Datos</a></li>
-            </ul>
-        </nav>
+        <?php
+            generarNav();
+        ?>
     </header>
     <div class="objetivos">
         <?php

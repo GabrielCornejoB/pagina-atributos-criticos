@@ -15,8 +15,18 @@
         <form action="php/login.php" method="post">
             <input type="text" name="username" placeholder="Usuario" required><br>
             <input type="password" name="pwd" placeholder="Contraseña" required><br>
-            <button type="submit" name="submitLogin">Ingresar</button>
+            <button type="submit" name="submit">Ingresar</button>
         </form>
+        <?php
+            if (isset($_GET['error'])) {
+                if($_GET['error'] == 'wronglogin') {
+                    echo "<p>Usuario invalido</p>";
+                }
+                elseif($_GET['error'] == 'wrongpwd') {
+                    echo "<p>Contraseña incorrecta</p>";
+                }
+            }
+        ?>
     </div>
 </body>
 </html>
