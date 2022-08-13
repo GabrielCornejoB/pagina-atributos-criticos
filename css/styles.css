@@ -294,7 +294,7 @@ td, th {
     width: 15px;
 }
 ::-webkit-scrollbar-track {
-    background: #6d6d6d;
+    background: rgb(23, 23, 23);
 }
 ::-webkit-scrollbar-thumb {
     background: var(--principal);

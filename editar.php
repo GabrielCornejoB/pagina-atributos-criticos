@@ -116,6 +116,12 @@
 
                         echo "<button type='submit'>Agregar</button>";
                     echo "</form>";
+
+                    echo "<form action='php/eliminarDato.php' method='post'>";
+                        echo "<p style='color:red'>¡CUIDADO!, presionando el botón <strong>\"Eliminar\"</strong> se eliminará el dato.</p>";
+                        echo "<input type='text' name='id_dato2' hidden value='" . $idDato . "'>";
+                        echo "<button type='submit'>ELIMINAR</button>";
+                    echo "</form>";
                 }
             }
             else {
