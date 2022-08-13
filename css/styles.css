@@ -123,17 +123,27 @@ form p {
 }
 
 .problemas p {
-    padding-left: 1%;
-    font-size: 15px;
     color: whitesmoke;
+    font-size: 15px;
+}
+/* .problemas p:hover {
+    background-color: var(--principal);
+    cursor: pointer;
+} */
+
+.problemas .problema-lapiz {
+    display: flex;
+    flex-direction: row;
+    padding-left: 1%;
     margin-top: 5px;
     padding-top: 5px;
     margin-bottom: 5px;
     padding-bottom: 5px;
     background-color: rgb(34, 34, 41);
     transition: all 0.3s ease 0s;
+    justify-content: space-between;
 }
-.problemas p:hover {
+.problemas .problema-lapiz:hover {
     background-color: var(--principal);
     cursor: pointer;
 }
@@ -141,20 +151,16 @@ form p {
 
 .problema-ext{
     background-color: whitesmoke;
+    
 }
 .problema-ext p {
     background-color: transparent;
     color: black;
+    padding: 5px;
 }
 .problema-ext p:hover {
     cursor: default;
     background-color: lightgray;
-}
-
-.prob-titulo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 .radios-problemas {
@@ -196,9 +202,6 @@ select {
     padding: 5px 10px;
 }
 
-/* .tablas {
-    
-} */
 table {
     margin: 0 auto;
     background-color: white;

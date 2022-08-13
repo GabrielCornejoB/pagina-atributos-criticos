@@ -27,36 +27,34 @@ function generarAspectosP () {
     if ($filasObj > 0) {
         $count = 0;
         while ($obj = mysqli_fetch_assoc($sqlObj)) {
-            $strHTML = $strHTML . "<div class='prob-titulo'><p>" . $obj['descripcion'] . "</p>" . 
-                                    "<form action='./editar.php' method='post' class='form-edit'>" . 
-                                        "<input type='text' name='id_tipo' value='2' hidden>" . 
-                                        "<input type='text' name='id_obj' hidden value='" . $obj['id_objetivo'] . "'>" .
-                                        "<button type='submit'><span class='material-symbols-outlined'>edit</span></div></button>" . 
-                                    "</form><div class='problemas'>";
+             echo "<p>" . $obj['descripcion'] . "</p>";
+             echo "<div class='problemas'>";
 
-            $queryProb = "SELECT * FROM problemas WHERE id_objetivo=" . $obj['id_objetivo'];
-            $sqlProb = mysqli_query($conn, $queryProb);
-            $filasProb = mysqli_num_rows($sqlProb);
-            if($filasProb > 0) {
+             $queryProb = "SELECT * FROM problemas WHERE id_objetivo=" . $obj['id_objetivo'];
+             $sqlProb = mysqli_query($conn, $queryProb);
+             $filasProb = mysqli_num_rows($sqlProb);
+            if ($filasProb > 0) {
                 while ($prob = mysqli_fetch_assoc($sqlProb)) {
                     $count = $count + 1;
-                    $strHTML = $strHTML . "<div class='problema' onclick=\"infoProblema('problema$count')\">";
-
+                    echo "<div class='problema' onclick=\"infoProblema('problema$count')\">";
                     $esDeDatos = "NO";
                     if ($prob['es_de_datos'] == '1') {
                         $esDeDatos = "SI";
                     }
-
-                    $strHTML = $strHTML . "<p>" . $prob['descripcion'] . "</p></div>";      // Si falla el ext quitar este ultimo </div>
-                    $strHTML = $strHTML . "<div class='problema-ext' id='problema" . $count . "' hidden>" . 
-                                            "<p><strong>Justificación: </strong>" . $prob['justificacion'] ."</p>" . 
-                                            "<p><strong>Es ocasionado por calidad de datos: </strong>" . $esDeDatos . "</p>" . 
-                                            "<p><strong>Justificacion de porque es ocasionado o no por calidad de datos: </strong>" . $prob['justificacion_es_de_datos'] . "</p></div>";
-
-                    // $strHTML = $strHTML . "</div>";
-                }      
-            }         
-            $strHTML = $strHTML . "</div><hr>";
+                    echo "<div class='problema-lapiz'><p>" . $prob['descripcion'] . "</p>" . 
+                            "<form class='form-edit' action='./editar.php' method='post'>" . 
+                                "<input type='text' name='id_tipo' value='2' hidden>" . 
+                                "<input type='text' name='id_prob' hidden value='" . $prob['id_problema'] . "'>" .
+                                "<button type='submit'><span class='material-symbols-outlined' style='font-size:17px;margin-right:7px;'>edit</span></button>" .
+                            "</form>" .
+                            "</div></div>";
+                    echo "<div class='problema-ext' id='problema$count' hidden>" .
+                            "<p><strong>Justificación: </strong>" . $prob['justificacion'] ."</p>" .
+                            "<p><strong>Es ocasionado por calidad de datos: </strong>" . $esDeDatos . "</p>" .
+                            "<p><strong>Justificacion de porque es ocasionado o no por calidad de datos: </strong>" . $prob['justificacion_es_de_datos'] . "</p></div>";
+                }
+            }  
+            echo "</div><hr>";
         }
         echo $strHTML;
     }
@@ -79,7 +77,6 @@ function generarDatos () {
     $queryObj = "SELECT * FROM objetivos WHERE id_empresa=1;";
     $sqlObj = mysqli_query($conn, $queryObj);
     $filasObj = mysqli_num_rows($sqlObj);
-    $strHTML = "";
 
     if ($filasObj > 0) {
         while ($obj = mysqli_fetch_assoc($sqlObj)) {
@@ -88,8 +85,7 @@ function generarDatos () {
             $queryProb = "SELECT * FROM problemas WHERE id_objetivo=" . $obj['id_objetivo'] . ";";
             $sqlProb = mysqli_query($conn, $queryProb);
             $filasProb = mysqli_num_rows($sqlProb);
-            $htmlTable = "";
-            echo "<table >";
+            echo "<table>";
             if ($filasProb > 0) {
                 while ($prob = mysqli_fetch_assoc($sqlProb)) {
                     if ($prob['es_de_datos'] == 1) {
@@ -129,26 +125,5 @@ function generarSelectProbs () {
                 echo "<option value='" . $prob['id_problema'] . "'>" . substr($prob['descripcion'],0,70) . "</option>";
             }   
         }
-    }
-}
-function generarFormEditarP ($id_obj) {
-    require './php/connection.php';
-    $queryProb = "SELECT * FROM problemas WHERE id_objetivo='$id_obj';";
-    $sqlProb = mysqli_query($conn, $queryProb);
-    $filasProb = mysqli_num_rows($sqlProb);
-    if ($filasProb > 0) {
-        echo "<form action='php/editarProblema.php' method='post'>";
-            echo "<p>Aquí puede modificar la los valores de un aspecto problemático, primero debe elegir que aspecto problemático quiere modificar, y luego en los campos de texto puede colocar los nuevos valores. Si desea guardar los cambios presione <strong>\"Aplicar\"</strong>, si desea descartar los cambios presione <strong>\"Regresar\"</strong></p>";
-            echo "<select name='aspectosP' required>";
-            echo "<option disabled selected value style='color:gray'> -- seleccione el aspecto problemático que desea modificar-- </option>";
-            while ($prob = mysqli_fetch_assoc($sqlProb)) {  
-                echo "<option value='" . $prob['id_problema'] . "'>" . substr($prob['descripcion'],0,70) . "</option>";
-            }
-            echo "</select>";
-
-        echo "</form>";
-    }
-    else {
-        echo "<p>Este objetivo no tiene aspectos problemáticos</p>";
     }
 }

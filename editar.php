@@ -49,8 +49,18 @@
                     echo "</form>";
                 }
                 elseif ($tipo == 2) {
-                    $idObj= $_POST['id_obj'];         
-                    generarFormEditarP($idObj);
+                    $idProb= $_POST['id_prob'];  
+                    echo $idProb;       
+                    require_once "php/connection.php";
+                    $query = "SELECT * FROM problemas WHERE id_problema='$idProb';";
+                    $sqlProb = mysqli_query($conn, $query);
+                    $filasProb = mysqli_num_rows($sqlProb);
+                    $prob = mysqli_fetch_assoc($sqlProb);
+                    echo $prob['id_problema'] . "<br>";
+                    echo $prob['descripcion'] . "<br>";
+                    echo $prob['justificacion'] . "<br>";
+                    echo $prob['es_de_datos'] . "<br>";
+                    echo $prob['justificacion_es_de_datos'] . "<br>";
                 }
                 elseif ($tipo == 3) {
                     // $idDato = $_POST['id_dato'];
