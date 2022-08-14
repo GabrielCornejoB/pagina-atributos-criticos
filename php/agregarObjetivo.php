@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "connection.php";
 $objetivo = $_POST['objetivo'];
 $idEmpresa = $_SESSION['ide'];
