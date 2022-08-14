@@ -35,6 +35,7 @@ function loginUser($conn, $username, $pwd) {
     else if($pwd === $pwdBd) {
         session_start();
         $_SESSION["user"] = $userExists["usuario"];
+        $_SESSION["ide"] = $userExists['id_empresa'];
         header("location: ../objetivos.php");
         exit();
     }

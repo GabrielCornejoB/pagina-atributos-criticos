@@ -1,8 +1,9 @@
 <?php
 function generarObjetivos () {
     require_once './php/connection.php';
-    // Conectar lo de id_empresa con el login
-    $query = "SELECT * FROM objetivos WHERE id_empresa=1;";
+    $idEmpresa = $_SESSION['ide'];
+
+    $query = "SELECT * FROM objetivos WHERE id_empresa=$idEmpresa;";
     $result = mysqli_query($conn, $query);
     $resultRows = mysqli_num_rows($result);
     if ($resultRows > 0) {
@@ -19,8 +20,9 @@ function generarObjetivos () {
 }
 function generarAspectosP () {
     require './php/connection.php';
+    $idEmpresa = $_SESSION['ide'];
     // Conectar lo de id_empresa con el login
-    $queryObj = "SELECT * FROM objetivos WHERE id_empresa=1;";
+    $queryObj = "SELECT * FROM objetivos WHERE id_empresa=$idEmpresa;";
     $sqlObj = mysqli_query($conn, $queryObj);
     $filasObj = mysqli_num_rows($sqlObj);
     $strHTML = "";
@@ -61,7 +63,8 @@ function generarAspectosP () {
 }
 function generarSelect () {
     require './php/connection.php';
-    $queryObj = "SELECT * FROM objetivos WHERE id_empresa=1;";
+    $idEmpresa = $_SESSION['ide'];
+    $queryObj = "SELECT * FROM objetivos WHERE id_empresa=$idEmpresa;";
     $sqlObj = mysqli_query($conn, $queryObj);
     $filasObj = mysqli_num_rows($sqlObj);
     if ($filasObj > 0) {
@@ -73,8 +76,8 @@ function generarSelect () {
 function generarDatos () {
     setlocale(LC_MONETARY,"en_US");
     require './php/connection.php';
-    // Conectar lo de id_empresa con el login
-    $queryObj = "SELECT * FROM objetivos WHERE id_empresa=1;";
+    $idEmpresa = $_SESSION['ide'];
+    $queryObj = "SELECT * FROM objetivos WHERE id_empresa=$idEmpresa;";
     $sqlObj = mysqli_query($conn, $queryObj);
     $filasObj = mysqli_num_rows($sqlObj);
 
@@ -121,7 +124,9 @@ function generarDatos () {
 }
 function generarSelectProbs () {
     require './php/connection.php';
-    $queryProb = "SELECT * FROM problemas";
+    // Aqui hay que hacer un join
+    $idEmpresa = $_SESSION['ide'];
+    $queryProb = "SELECT problemas.id_problema, problemas.descripcion, problemas.es_de_datos FROM problemas JOIN objetivos ON problemas.id_objetivo = objetivos.id_objetivo WHERE objetivos.id_empresa=$idEmpresa;";
     $sqlProb = mysqli_query($conn, $queryProb);
     $filasProb = mysqli_num_rows($sqlProb);
     if ($filasProb > 0) {

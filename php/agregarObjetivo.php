@@ -2,7 +2,8 @@
 
 require_once "connection.php";
 $objetivo = $_POST['objetivo'];
-$query = "INSERT INTO objetivos (id_empresa, descripcion) VALUES ('1', '$objetivo');";
+$idEmpresa = $_SESSION['ide'];
+$query = "INSERT INTO objetivos (id_empresa, descripcion) VALUES ('$idEmpresa', '$objetivo');";
 
 mysqli_query($conn, $query);
 header("location: ../objetivos.php");
