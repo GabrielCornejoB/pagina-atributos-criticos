@@ -36,7 +36,7 @@ function loginUser($conn, $username, $pwd) {
         session_start();
         $_SESSION["user"] = $userExists["usuario"];
         $_SESSION["ide"] = $userExists['id_empresa'];
-        header("location: ../objetivos.php");
+        header("location: ../metodologia.php");
         exit();
     }
 }

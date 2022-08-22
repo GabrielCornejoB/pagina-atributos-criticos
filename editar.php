@@ -126,7 +126,7 @@
                 }
             }
             else {
-                header("location: objetivos.php");
+                header("location: metodologia.php");
             }
         ?>
          
