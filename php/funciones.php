@@ -8,7 +8,7 @@ function generarObjetivos () {
     $resultRows = mysqli_num_rows($result);
     if ($resultRows > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            echo "<div class='objetivo'><p>" . $row['descripcion'] . "</p>" . 
+            echo "<div class='objetivo'><p><strong>Objetivo:</strong>&emsp;" . $row['descripcion'] . "</p>" . 
                     "<form action='./editar.php' method='post' class='form-edit'>" . 
                         "<input type='text' name='id_tipo' value='1' hidden>" . 
                         "<input type='text' name='id_obj' hidden value='" . $row['id_objetivo'] . "'>" .
@@ -29,7 +29,7 @@ function generarAspectosP () {
     if ($filasObj > 0) {
         $count = 0;
         while ($obj = mysqli_fetch_assoc($sqlObj)) {
-             echo "<p>" . $obj['descripcion'] . "</p>";
+             echo "<p><strong>Objetivo:</strong>&emsp;" . $obj['descripcion'] . "</p>";
              echo "<div class='problemas'>";
 
              $queryProb = "SELECT * FROM problemas WHERE id_objetivo=" . $obj['id_objetivo'];
@@ -43,7 +43,7 @@ function generarAspectosP () {
                     if ($prob['es_de_datos'] == '1') {
                         $esDeDatos = "SI";
                     }
-                    echo "<div class='problema-lapiz'><p>" . $prob['descripcion'] . "</p>" . 
+                    echo "<div class='problema-lapiz'><p><strong>Aspecto problemático:</strong>&emsp;" . $prob['descripcion'] . "</p>" . 
                             "<form class='form-edit' action='./editar.php' method='post'>" . 
                                 "<input type='text' name='id_tipo' value='2' hidden>" . 
                                 "<input type='text' name='id_prob' hidden value='" . $prob['id_problema'] . "'>" .
@@ -83,7 +83,7 @@ function generarDatos () {
 
     if ($filasObj > 0) {
         while ($obj = mysqli_fetch_assoc($sqlObj)) {
-            echo "<div class='prob-titulo'><p>" . $obj['descripcion'] . "<div class='problemas'>";
+            echo "<div class='prob-titulo'><p><strong>Objetivo:</strong>&emsp;" . $obj['descripcion'] . "<div class='problemas'>";
 
             $queryProb = "SELECT * FROM problemas WHERE id_objetivo=" . $obj['id_objetivo'] . ";";
             $sqlProb = mysqli_query($conn, $queryProb);
@@ -92,7 +92,7 @@ function generarDatos () {
             if ($filasProb > 0) {
                 while ($prob = mysqli_fetch_assoc($sqlProb)) {
                     if ($prob['es_de_datos'] == 1) {
-                        echo "<tr><td colspan=5 class='prob-tabla'>" . $prob['descripcion'] . "</td></tr>" . 
+                        echo "<tr><td colspan=5 class='prob-tabla'>Aspecto problemático:&emsp;" . $prob['descripcion'] . "</td></tr>" . 
                         "<tr><th style='width:15%'>Dato</th>" ."<th style='width:15%'>Frecuencia mensual</th>" ."<th style='width:15%'>Valor anual</th>" ."<th style='width:45%'>Justificación</th>" . "<th style='width:10%'>¿Editar?</th>" .  "</tr>";
 
                         $queryDato = "SELECT * FROM datos WHERE id_problema=" . $prob['id_problema'] . ";";
@@ -119,6 +119,7 @@ function generarDatos () {
             }
             echo "</table>";
             echo "</div><hr>";
+            echo "</div>";
         }
     }
 }
@@ -152,4 +153,11 @@ function generarNav() {
         header("location: index.php");
         exit();
     }
+}
+function generarFooter() {
+    echo "<footer>" .
+            "<div class='footer-content'>" .
+                "<p>Todos los derechos reservados. No utilizar ni distribuir sin autorización.</p>" .
+            "</div>" .
+        "</footer>";
 }

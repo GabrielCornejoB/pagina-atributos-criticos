@@ -298,6 +298,19 @@ td, th {
     margin-top: 120px;
 }
 
+.footer-content {
+    background-color: rgb(34, 34, 41);
+    text-align: center;
+    margin-top: 15px;
+}
+.footer-content p {
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    padding: 10px 0;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 15px;

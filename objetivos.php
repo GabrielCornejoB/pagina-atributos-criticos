@@ -33,5 +33,8 @@
             <button type="submit">Agregar</button>
         </form>
     </div>
+    <?php
+        generarFooter();
+    ?>
 </body>
 </html>

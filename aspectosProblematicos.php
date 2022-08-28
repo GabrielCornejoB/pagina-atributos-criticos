@@ -62,5 +62,8 @@
             else { div.hidden = true; }
         }
     </script>
+    <?php
+        generarFooter();
+    ?>
 </body>
 </html>

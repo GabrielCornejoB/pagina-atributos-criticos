@@ -22,5 +22,8 @@
     </header>
     <p>A continuación se encuentra el proceso para completar el taller</p>
     <img src="imgs/metodologia.png" alt="metodologia" class="img-met">
+    <?php
+        generarFooter();
+    ?>
 </body>
 </html>
