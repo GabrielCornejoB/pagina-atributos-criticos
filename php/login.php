@@ -1,15 +1,5 @@
 <?php
 
-// function emptyInputLogin($username, $password) {
-//     $result;
-//     if(empty($username) || empty($password)) {
-//         $result = true;
-//     }
-//     else {
-//         $result = false;
-//     }
-//     return $result;
-// }
 function userExists($conn, $username) {
     $sql = "SELECT * FROM empresas WHERE usuario = '$username';";
     $sqlUser = mysqli_query($conn, $sql);
